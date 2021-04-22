@@ -1,0 +1,60 @@
+:root {
+  --topbar-height: 6rem;
+  --topbar-light-bgcolor: white;
+  --topbar-light-color: black;
+  --topbar-light-btn-color: black;
+  --topbar-dark-bgcolor: rgba(33, 33, 33, 1);
+  --topbar-dark-color: white;
+  --topbar-dark-btn-color: white;
+}
+.topbar {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--topbar-light-bgcolor);
+  color: var(--topbar-light-color);
+  height: var(--topbar-height);
+  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
+  transition: top 0.3s;
+  z-index: 5;
+  padding: 0.5rem 1rem;
+}
+.topbar__buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1rem;
+}
+.topbar__buttons__left {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.topbar__buttons__right {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+.topbar__buttons__right a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--topbar-light-btn-color);
+}
+.topbar__search {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 1rem;
+}
+.topbar__logo {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--topbar-light-color);
+}

@@ -1,0 +1,19 @@
+.productsListing {
+  margin-top: 7rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.productsListing__wrapper {
+  width: 80%;
+}
+.productsListing__buttons {
+  margin: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
