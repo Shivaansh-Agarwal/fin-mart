@@ -1,0 +1,12 @@
+.modal__close {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.modal__heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
