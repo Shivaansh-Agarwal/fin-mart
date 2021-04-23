@@ -9,14 +9,7 @@ export const ModalSort = ({ isOpen, setIsOpen }) => {
     <Modal isOpen={isOpen} style={modalStyle}>
       <div className="modal__heading">Sort By</div>
       <label>
-        <input
-          type="radio"
-          name="sort"
-          checked={sortBy === "HIGH_TO_LOW"}
-          onChange={() => {
-            dispatch({ type: "SORT", payload: "HIGH_TO_LOW" });
-          }}
-        />
+        <input type="radio" name="sort" />
       </label>
       <button
         className="modal__close"
