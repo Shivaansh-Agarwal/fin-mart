@@ -4,27 +4,36 @@ import { BadgeProduct, BadgeRating } from "../Badges";
 import { ButtonLike } from "../Buttons";
 
 export const CardProductItem = ({ item }) => {
-  const { productName, productDesc, author } = item.details;
   const {
-    publisher,
-    language,
-    pages,
+    additionalDetails,
+    badge,
+    created_at,
+    description,
+    images,
+    inStock,
+    links,
+    name,
+    price,
+    ratings,
+    updated_at,
+    _id,
+  } = item;
+  const {
+    author,
+    countryOfOrigin,
     dimensions,
     isbn10,
     isbn13,
-  } = item.additionalDetails;
-  const {
-    currPrice,
-    mrp,
-    discount,
-    discountText,
-    discountAmount,
-    discountBadgeBgColor,
-  } = item.price;
-  const { avgRatings } = item.ratings;
-  const { tagName, badgeBgColor, showBadge } = item.badge;
-  const { imgURL } = item.images;
-  const { amazon: amazonLink } = item.links;
+    language,
+    pages,
+    publisher,
+    weight,
+  } = additionalDetails;
+  const { showBadge, tagName } = badge;
+  const { discount, discountPercentage, discountedPrice, originalPrice } =
+    price;
+  const { avgRatings, totalRatings } = ratings;
+
   return (
     <div className={`card card-shadow prod-card`}>
       <div className="prod-card-top">
@@ -33,25 +42,27 @@ export const CardProductItem = ({ item }) => {
         </div>
         {showBadge && (
           <div className="prod-badge-wrapper">
-            <BadgeProduct tag={tagName} backgroundColor={badgeBgColor} />
+            <BadgeProduct tag={tagName} />
           </div>
         )}
         <div className={`card-img`}>
-          <img src={imgURL} alt="" />
+          <img src={images[0]} alt="" />
         </div>
         <div className="prod-card-rating-wrapper">
           <BadgeRating rating={avgRatings} />
         </div>
       </div>
       <div className={`prod-card-details`}>
-        <div className={`card-title`}>{productName}</div>
+        <div className={`card-title`}>{name}</div>
         <div className={`card-description`}>{`by ${author}`}</div>
         <div className={`card-price`}>
-          <span className="card-price-curr">Rs. {currPrice}</span>
+          <span className="card-price-curr">Rs. {discountedPrice}</span>
           {discount && (
             <>
-              <span className="card-price-orig">Rs.{` ${mrp}`}</span>
-              <span className="card-discountPercentage">{discountText}</span>
+              <span className="card-price-orig">Rs.{` ${originalPrice}`}</span>
+              <span className="card-discountPercentage">
+                {discountPercentage}
+              </span>
             </>
           )}
         </div>
