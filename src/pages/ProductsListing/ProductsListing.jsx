@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Grid, ModalSort } from "../../components";
+import { useProductsContext } from "../../contexts/products.context.js";
 import "./productsListing.css";
 
-import productsData from "../../data.js";
+//import productsData from "../../data.js";
 
 export const ProductsListing = () => {
+  const { productsState, productsDispatch } = useProductsContext();
   const [isModalSortOpen, setIsModalSortOpen] = useState(false);
+
   return (
     <div className="productsListing">
       <div className="productsListing__wrapper">
@@ -19,7 +22,7 @@ export const ProductsListing = () => {
           </button>
           <button>Filter</button>
         </div>
-        <Grid productsList={productsData} />
+        <Grid productsList={productsState} />
       </div>
       <ModalSort isOpen={isModalSortOpen} setIsOpen={setIsModalSortOpen} />
     </div>
