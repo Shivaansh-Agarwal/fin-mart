@@ -1,11 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Modal from "react-modal";
+import { toast } from "react-toastify";
 import { Topbar } from "./components";
-import { Home, ProductsListing } from "./pages";
+import { Home, ProductsListing } from "./routes";
 import "./styles/App.css";
 
 Modal.setAppElement("#root");
+toast.configure();
 
 function App() {
   return (

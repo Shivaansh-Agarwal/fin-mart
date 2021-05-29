@@ -17,3 +17,6 @@
   grid-gap: 20px;
   grid-auto-flow: dense;
 }
+
+@media screen and (max-width: 500px) {
+}

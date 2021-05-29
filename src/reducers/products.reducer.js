@@ -1,15 +1,18 @@
-export function productsReducer(prevProductsState, action) {
+export function productsReducer(prevState, action) {
   switch (action.type) {
-    case "SET_PRODUCTS_DEFAULT":
-      return [...action.payload];
+    case "INITIALIZE_PRODUCT_LIST":
+      return {
+        ...prevState,
+        productsList: action.payload,
+      };
     case "SORT_NAME_A_Z":
-      return prevProductsState;
+      return prevState;
     case "SORT_NAME_Z_A":
-      return prevProductsState;
+      return prevState;
     case "SORT_PRICE_LOW_TO_HIGH":
-      return prevProductsState;
+      return prevState;
     case "SORT_PRICE_HIGH_TO_LOW":
-      return prevProductsState;
+      return prevState;
     default:
       throw new Error("Something's wrong in Products Reducer");
   }

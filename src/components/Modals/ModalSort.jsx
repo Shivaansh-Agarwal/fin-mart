@@ -1,14 +1,21 @@
 import React from "react";
 import Modal from "react-modal";
+import { useProductsContext } from "../../contexts/products.context.js";
 import "./modals.css";
 
 import { MdClose } from "react-icons/md";
 
 export const ModalSort = ({ isOpen, setIsOpen }) => {
+  const { productsDispatch } = useProductsContext();
   return (
     <Modal isOpen={isOpen} style={modalStyle}>
       <div className="modal__heading">Sort By</div>
       <label>
+        Recommended
+        <input type="radio" name="sort" />
+      </label>
+      <label>
+        Price - Low to High
         <input type="radio" name="sort" />
       </label>
       <button

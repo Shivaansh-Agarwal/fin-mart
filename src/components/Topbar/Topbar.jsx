@@ -12,7 +12,11 @@ export const Topbar = () => {
       <div className="topbar__buttons">
         <div className="topbar__buttons__left">
           <Link className="topbar__logo" to="/">
-            FIN-MART
+            <svg height="30" width="200">
+              <text x="0" y="25" className="topbar__logo_svg">
+                Fin Mart
+              </text>
+            </svg>
           </Link>
         </div>
         <div className="topbar__buttons__right">
@@ -23,10 +27,10 @@ export const Topbar = () => {
             Wishlist
           </Link>
           <Link className="" to="/cart">
-            <MdShoppingCart />
+            <MdShoppingCart /> Cart
           </Link>
           <Link className="" to="/login">
-            Login
+            Log In
           </Link>
         </div>
       </div>

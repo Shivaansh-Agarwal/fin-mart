@@ -3,9 +3,11 @@
   --topbar-light-bgcolor: white;
   --topbar-light-color: black;
   --topbar-light-btn-color: black;
+  --topbar-light-logo-color: black;
   --topbar-dark-bgcolor: rgba(33, 33, 33, 1);
   --topbar-dark-color: white;
   --topbar-dark-btn-color: white;
+  --topbar-dark-logo-color: white;
 }
 .topbar {
   display: flex;
@@ -14,8 +16,8 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--topbar-light-bgcolor);
-  color: var(--topbar-light-color);
+  background-color: var(--topbar-dark-bgcolor);
+  color: var(--topbar-dark-color);
   height: var(--topbar-height);
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
   transition: top 0.3s;
@@ -44,7 +46,7 @@
 .topbar__buttons__right a {
   margin-left: 1rem;
   text-decoration: none;
-  color: var(--topbar-light-btn-color);
+  color: var(--topbar-dark-btn-color);
 }
 .topbar__search {
   display: flex;
@@ -57,4 +59,11 @@
   font-size: 1.5rem;
   text-decoration: none;
   color: var(--topbar-light-color);
+}
+.topbar__logo_svg {
+  font-size: 2rem;
+  font-weight: 500;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  fill: var(--topbar-dark-logo-color);
 }
