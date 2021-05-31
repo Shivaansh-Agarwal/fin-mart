@@ -13,20 +13,29 @@ export const Home = () => {
   const { productsState, productsDispatch } = useProductsContext();
   const [showLoadingScreen, setShowLoadingScreen] = useState(false);
 
-  const getCampaigns = async () => {
+  const getProductsAndCampaigns = async () => {
     try {
       setShowLoadingScreen(true);
-      const { data } = await axios.get(
+      const campaignsResponse = await axios.get(
         "https://emart.shivaansh98.repl.co/api/v1/campaigns"
       );
+      const productsResponse = await axios.get(
+        "https://emart.shivaansh98.repl.co/api/v1/products"
+      );
+      const { campaigns } = campaignsResponse.data;
+      const { products } = productsResponse.data;
       productsDispatch({
         type: "INITIALIZE_CAMPAIGNS",
-        payload: data.campaigns,
+        payload: campaigns,
       });
-    } catch (error) {
-      console.error("ERROR while fetching campaigns", error);
+      productsDispatch({
+        type: "INITIALIZE_PRODUCT_LIST",
+        payload: products,
+      });
+    } catch (e) {
       toast.error(
-        "Error while fetching campaigns. Please try later! " + error,
+        "Error while fetching products or campaigns. Please try later! " +
+          error,
         {
           position: toast.POSITION.BOTTOM_CENTER,
         }
@@ -37,7 +46,7 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    getCampaigns();
+    getProductsAndCampaigns();
   }, []);
 
   return (
