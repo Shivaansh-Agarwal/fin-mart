@@ -5,6 +5,11 @@ export function productsReducer(prevState, action) {
         ...prevState,
         productsList: action.payload,
       };
+    case "INITIALIZE_CAMPAIGNS":
+      return {
+        ...prevState,
+        campaigns: action.payload,
+      };
     case "SORT_NAME_A_Z":
       return prevState;
     case "SORT_NAME_Z_A":

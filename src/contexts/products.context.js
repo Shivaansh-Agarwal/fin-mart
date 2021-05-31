@@ -8,6 +8,7 @@ export function ProductsContextProvider({ children }) {
     productsList: [],
     wishList: [],
     cartList: [],
+    campaigns: [],
     showOutOfStock: false,
     search: "",
     sortBy: "",
