@@ -1,0 +1,13 @@
+.login {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.login__left{
+    width: 30%;
+    background-color: cornflowerblue;
+}
+.login-right{
+    width: 70%;
+}
