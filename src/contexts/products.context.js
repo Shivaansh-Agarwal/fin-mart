@@ -6,9 +6,9 @@ const ProductsContext = createContext();
 export function ProductsContextProvider({ children }) {
   const [productsState, productsDispatch] = useReducer(productsReducer, {
     productsList: [],
+    campaigns: [],
     wishList: [],
     cartList: [],
-    campaigns: [],
     showOutOfStock: false,
     search: "",
     sortBy: "",
