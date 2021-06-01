@@ -29,7 +29,7 @@ export const Home = () => {
         type: "INITIALIZE_PRODUCT_LIST",
         payload: products,
       });
-    } catch (e) {
+    } catch (error) {
       toast.error(
         "Error while fetching products or campaigns. Please try later! " +
           error,
