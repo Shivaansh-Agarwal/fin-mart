@@ -33,7 +33,15 @@ export const CardProductItem = ({ item }) => {
   const { discount, discountPercentage, discountedPrice, originalPrice } =
     price;
   const { avgRatings, totalRatings } = ratings;
-
+  let badgeBackgroundColor = "pink";
+  let badgeColor = "white";
+  if (tagName === "NATIONAL BESTSELLER") {
+    badgeBackgroundColor = "green";
+    badgeColor = "white";
+  } else if (tagName === "WORLDWIDE BESTSELLER") {
+    badgeBackgroundColor = "#FFA500";
+    badgeColor = "white";
+  }
   return (
     <div className={`card card-shadow prod-card`}>
       <div className="prod-card-top">
@@ -42,7 +50,11 @@ export const CardProductItem = ({ item }) => {
         </div>
         {showBadge && (
           <div className="prod-badge-wrapper">
-            <BadgeProduct tag={tagName} />
+            <BadgeProduct
+              tag={tagName}
+              backgroundColor={badgeBackgroundColor}
+              color={badgeColor}
+            />
           </div>
         )}
         <div className={`card-img`}>
