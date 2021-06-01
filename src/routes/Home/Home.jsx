@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { CardOffer } from "../../components/Cards";
-import { nanoid } from "nanoid";
 import "./home.css";
 import { useProductsContext } from "../../contexts/products.context.js";
 import { LoadingScreen } from "../../components";
 import { toast } from "react-toastify";
 import axios from "axios";
-
-import dataHome from "./data.js";
 
 export const Home = () => {
   const { productsState, productsDispatch } = useProductsContext();
@@ -49,16 +46,46 @@ export const Home = () => {
     getProductsAndCampaigns();
   }, []);
 
+  const productsListHome = productsState.productsList.reduce(
+    (booksHomeList, currItem) => {
+      const { badge } = currItem;
+      switch (badge.tagName) {
+        case "NATIONAL BESTSELLER":
+          return {
+            ...booksHomeList,
+            nationalBestSellers: [
+              ...booksHomeList.nationalBestSellers,
+              currItem,
+            ],
+          };
+        case "WORLDWIDE BESTSELLER":
+          return {
+            ...booksHomeList,
+            worldWideBestSellers: [
+              ...booksHomeList.worldWideBestSellers,
+              currItem,
+            ],
+          };
+        default:
+          return booksHomeList;
+      }
+    },
+    {
+      worldWideBestSellers: [],
+      nationalBestSellers: [],
+    }
+  );
+
   return (
     <div className="home">
       <div className="home__wrapper">
         <div className="home__adv__row">
           {productsState.campaigns
             .slice(0, 2)
-            .map(({ name, description, offer, imgURL }) => {
+            .map(({ _id, name, description, offer, imgURL }) => {
               return (
                 <CardOffer
-                  key={nanoid()}
+                  key={_id}
                   title={name}
                   description={description}
                   discount={offer}
@@ -71,27 +98,40 @@ export const Home = () => {
         </div>
         <div className="home__adv__row bg-white">
           <div className="home__row__title">All-time Bestsellers</div>
-          {dataHome.row2.map(({ title, description, discount, imgURL }) => {
-            return (
-              <CardOffer
-                key={nanoid()}
-                title={title}
-                description={description}
-                discount={discount}
-                imgURL={imgURL}
-                prodURL=""
-                cardClassName="card-offer-type1"
-              />
-            );
-          })}
+          {productsListHome.worldWideBestSellers
+            .slice(0, 5)
+            .map(
+              ({
+                _id,
+                name,
+                description,
+                price,
+                images,
+                additionalDetails,
+              }) => {
+                const { discount, discountPercentage } = price;
+                const { author } = additionalDetails;
+                return (
+                  <CardOffer
+                    key={_id}
+                    title={name}
+                    description={author}
+                    discount={discount !== 0 ? discountPercentage : ""}
+                    imgURL={images[1]}
+                    prodURL=""
+                    cardClassName="card-offer-type1"
+                  />
+                );
+              }
+            )}
         </div>
         <div className="home__adv__row">
           {productsState.campaigns
             .slice(2, 4)
-            .map(({ name, description, offer, imgURL }) => {
+            .map(({ _id, name, description, offer, imgURL }) => {
               return (
                 <CardOffer
-                  key={nanoid()}
+                  key={_id}
                   title={name}
                   description={description}
                   discount={offer}
@@ -104,19 +144,32 @@ export const Home = () => {
         </div>
         <div className="home__adv__row bg-white">
           <div className="home__row__title">Indian Bestsellers</div>
-          {dataHome.row4.map(({ title, description, discount, imgURL }) => {
-            return (
-              <CardOffer
-                key={nanoid()}
-                title={title}
-                description={description}
-                discount={discount}
-                imgURL={imgURL}
-                prodURL=""
-                cardClassName="card-offer-type1"
-              />
-            );
-          })}
+          {productsListHome.nationalBestSellers
+            .slice(0, 5)
+            .map(
+              ({
+                _id,
+                name,
+                description,
+                price,
+                images,
+                additionalDetails,
+              }) => {
+                const { discount, discountPercentage } = price;
+                const { author } = additionalDetails;
+                return (
+                  <CardOffer
+                    key={_id}
+                    title={name}
+                    description={author}
+                    discount={discount !== 0 ? discountPercentage : ""}
+                    imgURL={images[1]}
+                    prodURL=""
+                    cardClassName="card-offer-type1"
+                  />
+                );
+              }
+            )}
         </div>
       </div>
       <LoadingScreen showLoadingScreen={showLoadingScreen} />
