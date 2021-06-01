@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
+import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { Grid, ModalSort } from "../../components";
 import { useProductsContext } from "../../contexts/products.context.js";
-import { LoadingScreen } from "../../components";
 import "./productsListing.css";
 
 export const ProductsListing = () => {
