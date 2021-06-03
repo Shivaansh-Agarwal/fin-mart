@@ -3,7 +3,7 @@ import { productsReducer } from "../reducers/products.reducer.js";
 
 const ProductsContext = createContext();
 
-export function ProductsContextProvider({ children }) {
+function ProductsContextProvider({ children }) {
   const [productsState, productsDispatch] = useReducer(productsReducer, {
     productsList: [],
     campaigns: [],
@@ -21,6 +21,14 @@ export function ProductsContextProvider({ children }) {
   );
 }
 
-export function useProductsContext() {
-  return useContext(ProductsContext);
+function useProductsContext() {
+  const context = useContext(ProductsContext);
+  if (context === undefined) {
+    throw new Error(
+      "useProductsContext must be used within a ProductsContextProvider"
+    );
+  }
+  return context;
 }
+
+export { ProductsContextProvider, useProductsContext };
