@@ -10,8 +10,8 @@ function ProductsContextProvider({ children }) {
     wishList: [],
     cartList: [],
     showOutOfStock: false,
-    search: "",
-    sortBy: "",
+    search: null,
+    sortBy: null,
   });
 
   return (

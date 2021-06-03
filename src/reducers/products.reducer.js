@@ -3,6 +3,8 @@ export function productsReducer(prevState, action) {
     case "INITIALIZE_PRODUCT_LIST":
       return {
         ...prevState,
+        search: null,
+        sortBy: null,
         productsList: action.payload,
       };
     case "INITIALIZE_CAMPAIGNS":
@@ -10,14 +12,31 @@ export function productsReducer(prevState, action) {
         ...prevState,
         campaigns: action.payload,
       };
+    case "SORT_RELEVANCE":
+      return {
+        ...prevState,
+        sortBy: null,
+      };
     case "SORT_NAME_A_Z":
-      return prevState;
+      return {
+        ...prevState,
+        sortBy: "SORT_NAME_A_Z",
+      };
     case "SORT_NAME_Z_A":
-      return prevState;
+      return {
+        ...prevState,
+        sortBy: "SORT_NAME_Z_A",
+      };
     case "SORT_PRICE_LOW_TO_HIGH":
-      return prevState;
+      return {
+        ...prevState,
+        sortBy: "SORT_PRICE_LOW_TO_HIGH",
+      };
     case "SORT_PRICE_HIGH_TO_LOW":
-      return prevState;
+      return {
+        ...prevState,
+        sortBy: "SORT_PRICE_HIGH_TO_LOW",
+      };
     default:
       throw new Error("Something's wrong in Products Reducer");
   }

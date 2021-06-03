@@ -6,18 +6,78 @@ import "./modals.css";
 import { MdClose } from "react-icons/md";
 
 export const ModalSort = ({ isOpen, setIsOpen }) => {
-  const { productsDispatch } = useProductsContext();
+  const { productsState, productsDispatch } = useProductsContext();
+  const { sortBy } = productsState;
   return (
     <Modal isOpen={isOpen} style={modalStyle}>
       <div className="modal__heading">Sort By</div>
-      <label>
-        Recommended
-        <input type="radio" name="sort" />
-      </label>
-      <label>
-        Price - Low to High
-        <input type="radio" name="sort" />
-      </label>
+      <ul className="modal__list">
+        <li className="modal__list_item_radio">
+          <label>
+            <input
+              type="radio"
+              name="sort"
+              onChange={() => {
+                productsDispatch({ type: "SORT_RELEVANCE" });
+              }}
+              checked={sortBy === null}
+            />
+            Relevance
+          </label>
+        </li>
+        <li className="modal__list_item_radio">
+          <label>
+            <input
+              type="radio"
+              name="sort"
+              onChange={() => {
+                productsDispatch({ type: "SORT_NAME_A_Z" });
+              }}
+              checked={sortBy === "SORT_NAME_A_Z"}
+            />
+            Name: A-Z
+          </label>
+        </li>
+        <li className="modal__list_item_radio">
+          <label>
+            <input
+              type="radio"
+              name="sort"
+              onChange={() => {
+                productsDispatch({ type: "SORT_NAME_Z_A" });
+              }}
+              checked={sortBy === "SORT_NAME_Z_A"}
+            />
+            Name: Z-A
+          </label>
+        </li>
+        <li className="modal__list_item_radio">
+          <label>
+            <input
+              type="radio"
+              name="sort"
+              onChange={() => {
+                productsDispatch({ type: "SORT_PRICE_LOW_TO_HIGH" });
+              }}
+              checked={sortBy === "SORT_PRICE_LOW_TO_HIGH"}
+            />
+            Price: Low To High
+          </label>
+        </li>
+        <li className="modal__list_item_radio">
+          <label>
+            <input
+              type="radio"
+              name="sort"
+              onChange={() => {
+                productsDispatch({ type: "SORT_PRICE_HIGH_TO_LOW" });
+              }}
+              checked={sortBy === "SORT_PRICE_HIGH_TO_LOW"}
+            />
+            Price: High To Low
+          </label>
+        </li>
+      </ul>
       <button
         className="modal__close"
         onClick={() => {
