@@ -5,78 +5,61 @@ import "./modals.css";
 
 import { MdClose } from "react-icons/md";
 
+const ModalListItem = ({
+  productsDispatch,
+  dispatchType,
+  sortBy,
+  displayName,
+}) => {
+  let sortByType = dispatchType === "SORT_RELEVANCE" ? null : dispatchType;
+  return (
+    <li className="modal__list_item_radio">
+      <label>
+        <input
+          type="radio"
+          name="sort"
+          onChange={() => {
+            productsDispatch({ type: dispatchType });
+          }}
+          checked={sortBy === sortByType}
+        />
+        {displayName}
+      </label>
+    </li>
+  );
+};
+
 export const ModalSort = ({ isOpen, setIsOpen }) => {
   const { productsState, productsDispatch } = useProductsContext();
   const { sortBy } = productsState;
+  const sortingList = [
+    { dispatchType: "SORT_RELEVANCE", displayName: "Relevance" },
+    { dispatchType: "SORT_NAME_A_Z", displayName: "Name: A-Z" },
+    { dispatchType: "SORT_NAME_Z_A", displayName: "Name: Z-A" },
+    {
+      dispatchType: "SORT_PRICE_LOW_TO_HIGH",
+      displayName: "Price: Low To High",
+    },
+    {
+      dispatchType: "SORT_PRICE_HIGH_TO_LOW",
+      displayName: "Price: High To Low",
+    },
+  ];
   return (
     <Modal isOpen={isOpen} style={modalStyle}>
       <div className="modal__heading">Sort By</div>
       <ul className="modal__list">
-        <li className="modal__list_item_radio">
-          <label>
-            <input
-              type="radio"
-              name="sort"
-              onChange={() => {
-                productsDispatch({ type: "SORT_RELEVANCE" });
-              }}
-              checked={sortBy === null}
+        {sortingList.map(({ dispatchType, displayName }, index) => {
+          return (
+            <ModalListItem
+              productsDispatch={productsDispatch}
+              dispatchType={dispatchType}
+              sortBy={sortBy}
+              displayName={displayName}
+              key={index}
             />
-            Relevance
-          </label>
-        </li>
-        <li className="modal__list_item_radio">
-          <label>
-            <input
-              type="radio"
-              name="sort"
-              onChange={() => {
-                productsDispatch({ type: "SORT_NAME_A_Z" });
-              }}
-              checked={sortBy === "SORT_NAME_A_Z"}
-            />
-            Name: A-Z
-          </label>
-        </li>
-        <li className="modal__list_item_radio">
-          <label>
-            <input
-              type="radio"
-              name="sort"
-              onChange={() => {
-                productsDispatch({ type: "SORT_NAME_Z_A" });
-              }}
-              checked={sortBy === "SORT_NAME_Z_A"}
-            />
-            Name: Z-A
-          </label>
-        </li>
-        <li className="modal__list_item_radio">
-          <label>
-            <input
-              type="radio"
-              name="sort"
-              onChange={() => {
-                productsDispatch({ type: "SORT_PRICE_LOW_TO_HIGH" });
-              }}
-              checked={sortBy === "SORT_PRICE_LOW_TO_HIGH"}
-            />
-            Price: Low To High
-          </label>
-        </li>
-        <li className="modal__list_item_radio">
-          <label>
-            <input
-              type="radio"
-              name="sort"
-              onChange={() => {
-                productsDispatch({ type: "SORT_PRICE_HIGH_TO_LOW" });
-              }}
-              checked={sortBy === "SORT_PRICE_HIGH_TO_LOW"}
-            />
-            Price: High To Low
-          </label>
-        </li>
+          );
+        })}
       </ul>
       <button
         className="modal__close"
