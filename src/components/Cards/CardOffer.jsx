@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useProductsContext } from "../../contexts/products.context.js";
 import "./styles/cards.css";
 
 export const CardOffer = ({
@@ -8,9 +10,17 @@ export const CardOffer = ({
   title,
   description,
   discount,
+  category,
 }) => {
+  const { productsDispatch } = useProductsContext();
   return (
-    <div className={`card card-shadow card-img-zoom ${cardClassName}`}>
+    <Link
+      to="/products"
+      className={`card card-shadow card-img-zoom ${cardClassName}`}
+      onClick={() => {
+        productsDispatch({ type: `FILTER_BY_${category}` });
+      }}
+    >
       <a href={prodURL}>
         <section className="card-img">
           <img src={imgURL} alt="products Offer Img" />
@@ -21,6 +31,6 @@ export const CardOffer = ({
           {description && <div className="card-description">{description}</div>}
         </section>
       </a>
-    </div>
+    </Link>
   );
 };

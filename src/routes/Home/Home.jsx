@@ -82,7 +82,7 @@ export const Home = () => {
         <div className="home__adv__row">
           {productsState.campaigns
             .slice(0, 2)
-            .map(({ _id, name, description, offer, imgURL }) => {
+            .map(({ _id, name, description, offer, imgURL, category }) => {
               return (
                 <CardOffer
                   key={_id}
@@ -91,6 +91,7 @@ export const Home = () => {
                   discount={offer}
                   imgURL={imgURL}
                   prodURL=""
+                  category={category}
                   cardClassName="card-offer-type2"
                 />
               );
@@ -128,7 +129,7 @@ export const Home = () => {
         <div className="home__adv__row">
           {productsState.campaigns
             .slice(2, 4)
-            .map(({ _id, name, description, offer, imgURL }) => {
+            .map(({ _id, name, description, offer, imgURL, category }) => {
               return (
                 <CardOffer
                   key={_id}
@@ -137,6 +138,7 @@ export const Home = () => {
                   discount={offer}
                   imgURL={imgURL}
                   prodURL=""
+                  category={category}
                   cardClassName="card-offer-type3"
                 />
               );

@@ -31,8 +31,32 @@ export const ProductsListing = () => {
     }
   };
 
-  let { productsList, sortBy } = productsState;
-  const finalProductsList = sortProducts([...productsList], sortBy);
+  const filterProducts = (products, filterBy) => {
+    switch (filterBy) {
+      case "FILTER_BY_STOCKS":
+        return products.filter(({ categories }) =>
+          categories.includes("STOCKS")
+        );
+      case "FILTER_BY_PERSONAL_FINANCE":
+        return products.filter(({ categories }) =>
+          categories.includes("PERSONAL_FINANCE")
+        );
+      case "FILTER_BY_MUTUAL_FUNDS":
+        return products.filter(({ categories }) =>
+          categories.includes("MUTUAL_FUNDS")
+        );
+      case "FILTER_BY_REAL_ESTATE":
+        return products.filter(({ categories }) =>
+          categories.includes("REAL_ESTATE")
+        );
+      default:
+        return products;
+    }
+  };
+
+  let { productsList, sortBy, filterBy } = productsState;
+  let finalProductsList = sortProducts([...productsList], sortBy);
+  finalProductsList = filterProducts(finalProductsList, filterBy);
 
   return (
     <div className="productsListing">

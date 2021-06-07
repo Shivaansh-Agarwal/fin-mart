@@ -5,6 +5,7 @@
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
   background-color: pink;
   margin: 0.5rem;
+  text-decoration: none;
 }
 .card-shadow:hover {
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 30%);

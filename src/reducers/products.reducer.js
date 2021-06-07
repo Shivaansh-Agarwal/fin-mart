@@ -5,6 +5,7 @@ export function productsReducer(prevState, action) {
         ...prevState,
         search: null,
         sortBy: null,
+        filterBy: null,
         productsList: action.payload,
       };
     case "INITIALIZE_CAMPAIGNS":
@@ -36,6 +37,26 @@ export function productsReducer(prevState, action) {
       return {
         ...prevState,
         sortBy: "SORT_PRICE_HIGH_TO_LOW",
+      };
+    case "FILTER_BY_STOCKS":
+      return {
+        ...prevState,
+        filterBy: "FILTER_BY_STOCKS",
+      };
+    case "FILTER_BY_PERSONAL_FINANCE":
+      return {
+        ...prevState,
+        filterBy: "FILTER_BY_PERSONAL_FINANCE",
+      };
+    case "FILTER_BY_MUTUAL_FUNDS":
+      return {
+        ...prevState,
+        filterBy: "FILTER_BY_MUTUAL_FUNDS",
+      };
+    case "FILTER_BY_REAL_ESTATE":
+      return {
+        ...prevState,
+        filterBy: "FILTER_BY_REAL_ESTATE",
       };
     default:
       throw new Error("Something's wrong in Products Reducer");
