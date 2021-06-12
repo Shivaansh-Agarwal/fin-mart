@@ -11,14 +11,23 @@ export const CardOffer = ({
   description,
   discount,
   category,
+  id,
 }) => {
   const { productsDispatch } = useProductsContext();
+  const linkto = cardClassName.includes("type1")
+    ? `/products/${id}`
+    : "/products";
   return (
     <Link
-      to="/products"
+      to={linkto}
       className={`card card-shadow card-img-zoom ${cardClassName}`}
       onClick={() => {
-        productsDispatch({ type: `FILTER_BY_${category}` });
+        if (category) {
+          productsDispatch({
+            type: "FILTER_PRODUCTS",
+            payload: `${category}`,
+          });
+        }
       }}
     >
       <a href={prodURL}>

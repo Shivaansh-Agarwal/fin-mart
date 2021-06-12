@@ -115,6 +115,7 @@ export const Home = () => {
                 return (
                   <CardOffer
                     key={_id}
+                    id={_id}
                     title={name}
                     description={author}
                     discount={discount !== 0 ? discountPercentage : ""}
@@ -162,6 +163,7 @@ export const Home = () => {
                 return (
                   <CardOffer
                     key={_id}
+                    id={_id}
                     title={name}
                     description={author}
                     discount={discount !== 0 ? discountPercentage : ""}

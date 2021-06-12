@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import { Grid, ModalSort } from "../../components";
+import { Grid, ModalSort, ModalFilter, Button } from "../../components";
 import { useProductsContext } from "../../contexts/products.context.js";
 import "./productsListing.css";
 
 export const ProductsListing = () => {
   const { productsState } = useProductsContext();
   const [isModalSortOpen, setIsModalSortOpen] = useState(false);
+  const [isModalFilterOpen, setIsModalFilterOpen] = useState(false);
 
   const sortProducts = (products, sortBy) => {
     switch (sortBy) {
@@ -32,26 +33,12 @@ export const ProductsListing = () => {
   };
 
   const filterProducts = (products, filterBy) => {
-    switch (filterBy) {
-      case "FILTER_BY_STOCKS":
-        return products.filter(({ categories }) =>
-          categories.includes("STOCKS")
-        );
-      case "FILTER_BY_PERSONAL_FINANCE":
-        return products.filter(({ categories }) =>
-          categories.includes("PERSONAL_FINANCE")
-        );
-      case "FILTER_BY_MUTUAL_FUNDS":
-        return products.filter(({ categories }) =>
-          categories.includes("MUTUAL_FUNDS")
-        );
-      case "FILTER_BY_REAL_ESTATE":
-        return products.filter(({ categories }) =>
-          categories.includes("REAL_ESTATE")
-        );
-      default:
-        return products;
+    if (filterBy.length !== 0) {
+      return products.filter(({ categories }) =>
+        categories.some((item) => filterBy.includes(item))
+      );
     }
+    return products;
   };
 
   let { productsList, sortBy, filterBy } = productsState;
@@ -62,18 +49,28 @@ export const ProductsListing = () => {
     <div className="productsListing">
       <div className="productsListing__wrapper">
         <div className="productsListing__buttons">
-          <button
-            onClick={() => {
+          <Button
+            onClickHandler={() => {
               setIsModalSortOpen(true);
             }}
-          >
-            Sort By
-          </button>
-          <button>Filter</button>
+            displayText="Sort By"
+            type="btn-outline-secondary"
+          />
+          <Button
+            onClickHandler={() => {
+              setIsModalFilterOpen(true);
+            }}
+            displayText="Filter By"
+            type="btn-outline-secondary"
+          />
         </div>
         <Grid productsList={finalProductsList} />
       </div>
       <ModalSort isOpen={isModalSortOpen} setIsOpen={setIsModalSortOpen} />
+      <ModalFilter
+        isOpen={isModalFilterOpen}
+        setIsOpen={setIsModalFilterOpen}
+      />
     </div>
   );
 };

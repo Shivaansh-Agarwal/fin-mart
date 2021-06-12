@@ -12,7 +12,7 @@ function ProductsContextProvider({ children }) {
     showOutOfStock: false,
     search: null,
     sortBy: null,
-    filterBy: null,
+    filterBy: [],
   });
 
   return (

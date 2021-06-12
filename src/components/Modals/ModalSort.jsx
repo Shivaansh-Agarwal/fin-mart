@@ -19,7 +19,7 @@ const ModalListItem = ({
           type="radio"
           name="sort"
           onChange={() => {
-            productsDispatch({ type: dispatchType });
+            productsDispatch({ type: "SORT_PRODUCTS", payload: dispatchType });
           }}
           checked={sortBy === sortByType}
         />

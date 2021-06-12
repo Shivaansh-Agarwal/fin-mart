@@ -5,7 +5,7 @@ export function productsReducer(prevState, action) {
         ...prevState,
         search: null,
         sortBy: null,
-        filterBy: null,
+        filterBy: [],
         productsList: action.payload,
       };
     case "INITIALIZE_CAMPAIGNS":
@@ -13,50 +13,23 @@ export function productsReducer(prevState, action) {
         ...prevState,
         campaigns: action.payload,
       };
-    case "SORT_RELEVANCE":
+    case "SORT_PRODUCTS":
       return {
         ...prevState,
-        sortBy: null,
+        sortBy: action.payload,
       };
-    case "SORT_NAME_A_Z":
+    case "FILTER_PRODUCTS":
+      let filterByList = [...prevState.filterBy];
+      if (filterByList.includes(action.payload)) {
+        filterByList = filterByList.filter(
+          (filterCategory) => filterCategory !== action.payload
+        );
+      } else {
+        filterByList.push(action.payload);
+      }
       return {
         ...prevState,
-        sortBy: "SORT_NAME_A_Z",
-      };
-    case "SORT_NAME_Z_A":
-      return {
-        ...prevState,
-        sortBy: "SORT_NAME_Z_A",
-      };
-    case "SORT_PRICE_LOW_TO_HIGH":
-      return {
-        ...prevState,
-        sortBy: "SORT_PRICE_LOW_TO_HIGH",
-      };
-    case "SORT_PRICE_HIGH_TO_LOW":
-      return {
-        ...prevState,
-        sortBy: "SORT_PRICE_HIGH_TO_LOW",
-      };
-    case "FILTER_BY_STOCKS":
-      return {
-        ...prevState,
-        filterBy: "FILTER_BY_STOCKS",
-      };
-    case "FILTER_BY_PERSONAL_FINANCE":
-      return {
-        ...prevState,
-        filterBy: "FILTER_BY_PERSONAL_FINANCE",
-      };
-    case "FILTER_BY_MUTUAL_FUNDS":
-      return {
-        ...prevState,
-        filterBy: "FILTER_BY_MUTUAL_FUNDS",
-      };
-    case "FILTER_BY_REAL_ESTATE":
-      return {
-        ...prevState,
-        filterBy: "FILTER_BY_REAL_ESTATE",
+        filterBy: filterByList,
       };
     default:
       throw new Error("Something's wrong in Products Reducer");
