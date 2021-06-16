@@ -54,14 +54,14 @@ export const ProductsListing = () => {
               setIsModalSortOpen(true);
             }}
             displayText="Sort By"
-            type="btn-outline-secondary"
+            type="btn-primary"
           />
           <Button
             onClickHandler={() => {
               setIsModalFilterOpen(true);
             }}
             displayText="Filter By"
-            type="btn-outline-secondary"
+            type="btn-primary"
           />
         </div>
         <Grid productsList={finalProductsList} />

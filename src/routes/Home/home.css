@@ -7,6 +7,7 @@
   align-items: center;
   width: 100%;
   background-color: #eaeded;
+  min-height: 90vh;
 }
 .home__wrapper {
   width: 80%;

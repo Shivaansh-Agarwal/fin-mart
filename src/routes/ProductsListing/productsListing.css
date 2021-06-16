@@ -3,6 +3,7 @@
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -14,5 +15,5 @@
   margin: 1rem;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: flex-end;
 }
