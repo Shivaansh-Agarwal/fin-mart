@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+  --product-margin-top: 10rem;
+  --product-margin-bottom: 3rem;
+  --product-margin-left: 10rem;
+  --product-margin-right: 10rem;
+  --product-name-font-size: 1.8rem;
+  --product-name-font-weight: 400;
+  --product-name-color: black;
+  --product-bookbinding-font-size: 1.4rem;
+  --product-bookbinding-font-weight: 200;
+  --product-bookbinding-color: rgba(86, 89, 89, 0.7);
+  --product-author-font-size: 1.2rem;
+  --product-author-font-weight: 400;
+  --product-author-color: rgba(0, 0, 0, 0.9);
+}
+
+.product {
+  font-family: "Poppins", sans-serif;
+  margin-top: var(--product-margin-top);
+  margin-bottom: var(--product-margin-bottom);
+  margin-left: var(--product-margin-left);
+  margin-right: var(--product-margin-right);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(100% - var(--product-margin-left) - var(--product-margin-right));
+  min-height: calc(100vh - var(--product-margin-top));
+  outline: 1px solid black;
+}
+
+.product__header {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(231, 231, 231, 1);
+}
+
+.product__name {
+  font-size: var(--product-name-font-size);
+  font-weight: var(--product-name-font-weight);
+  color: var(--product-name-color);
+}
+
+.product__bookbinding {
+  font-size: var(--product-bookbinding-font-size);
+  font-weight: var(--product-bookbinding-font-weight);
+  color: var(--product-bookbinding-color);
+  margin-left: 1rem;
+}
+
+.product__author {
+  font-size: var(--product-author-font-size);
+  font-weight: var(--product-author-font-weight);
+  color: var(--product-author-color);
+}
+
+.product__main {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.product__image {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  outline: 1px solid black;
+}
+.product__image img {
+  max-width: 231px;
+  max-height: 346px;
+}
+.product__information {
+  width: 60%;
+  outline: 1px solid black;
+}
+.product__price {
+  width: 20%;
+  height: fit-content;
+  outline: 1px solid black;
+}
+
+.section--heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 0rem;
+  margin-bottom: 0.5rem;
+}
+
+.section--subheading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0rem;
+  margin-bottom: 0.2rem;
+}
+
+/*--- Generic CSS ---*/
+
+.product ul {
+  margin: 0rem;
+  padding-left: 1rem;
+}
+
+.product p {
+  margin-top: 0rem;
+}
+
+.list-item-nobullet {
+  list-style: none;
+}
+
+.text-bold {
+  font-weight: 600;
+}

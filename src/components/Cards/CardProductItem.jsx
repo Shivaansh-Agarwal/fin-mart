@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles/cards.css";
 import { BadgeProduct, BadgeRating } from "../Badges";
 import { ButtonLike } from "../Buttons";
@@ -43,7 +44,7 @@ export const CardProductItem = ({ item }) => {
     badgeColor = "white";
   }
   return (
-    <div className={`card card-shadow prod-card`}>
+    <Link to={`/products/${_id}`} className={`card card-shadow prod-card`}>
       <div className="prod-card-top">
         <div className="btn-wishlist-wrapper">
           <ButtonLike />
@@ -80,6 +81,6 @@ export const CardProductItem = ({ item }) => {
         </div>
       </div>
       <div className={`prod-card-buttons`}></div>
-    </div>
+    </Link>
   );
 };
