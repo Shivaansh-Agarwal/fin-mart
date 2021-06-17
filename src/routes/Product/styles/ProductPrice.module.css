@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --buybox-font-family: "Roboto", sans-serif;
+  --buybox-padding-vertical: 1.2rem;
+  --buybox-padding-horizontal: 1rem;
+  --buybox-border-color: rgba(213, 217, 217, 1);
+  --buybox-boxshadow: 0 0 0 4px rgb(0 0 0 / 10%);
+  --buybox-border-radius: 0.5rem;
+  --buybox-font-size: 0.9rem;
+  --buybox-font-color: #565959;
+  --price-color: #b12704;
+  --price-font-size: 1.4rem;
+
+  --btn-enabled-color: #43467f;
+  --btn-disabled-color: #8284ac;
+}
+
+.buybox {
+  padding: var(--buybox-padding-vertical) var(--buybox-padding-horizontal);
+  border: 1px solid var(--buybox-border-color);
+  box-shadow: var(--buybox-boxshadow);
+  border-radius: var(--buybox-border-radius);
+  font-size: var(--buybox-font-size);
+  font-family: var(--buybox-font-family);
+  color: var(--buybox-font-color);
+}
+
+.buybox__buttons {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.buybox__buttons > button {
+  font-size: 1rem;
+  margin-top: 0.7rem;
+  padding: 0.6rem 1rem;
+  min-width: 100%;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.btnaddtocart {
+  color: white;
+  border-color: var(--btn-enabled-color);
+  background-color: var(--btn-enabled-color);
+}
+.btnaddtocart:disabled {
+  border-color: var(--btn-disabled-color);
+  background-color: var(--btn-disabled-color);
+  cursor: not-allowed;
+}
+.btnbuynow {
+  color: var(--btn-enabled-color);
+  border-color: var(--btn-enabled-color);
+  background-color: white;
+}
+.btnbuynow:disabled {
+  color: var(--btn-disabled-color);
+  border-color: var(--btn-disabled-color);
+  background-color: rgb(238, 228, 228);
+  cursor: not-allowed;
+}
+
+.stock {
+  margin: 1.1rem 0rem;
+  font-size: 1.2rem;
+}
+.instock {
+  color: #058552;
+}
+.outofstock {
+  color: rgb(226, 126, 33);
+}
+
+.price {
+  color: var(--price-color);
+  font-size: var(--price-font-size);
+}
+
+.mrp {
+  text-decoration: line-through;
+}
+
+.taxes {
+  color: rgba(0, 0, 0, 1);
+}

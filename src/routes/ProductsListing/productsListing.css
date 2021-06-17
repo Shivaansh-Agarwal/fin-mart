@@ -12,8 +12,8 @@
   width: 80%;
 }
 .productsListing__buttons {
-  margin: 1rem;
+  margin: 1rem 0.5rem;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }

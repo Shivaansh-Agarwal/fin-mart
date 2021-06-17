@@ -1,10 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
+  --product-image-width: 15%;
+  --product-information-width: 60%;
+  --product-price-width: 16%;
+
   --product-margin-top: 10rem;
   --product-margin-bottom: 3rem;
-  --product-margin-left: 10rem;
-  --product-margin-right: 10rem;
+  --product-margin-left: 15rem;
+  --product-margin-right: 15rem;
+
   --product-name-font-size: 1.8rem;
   --product-name-font-weight: 400;
   --product-name-color: black;
@@ -28,7 +33,6 @@
   align-items: center;
   width: calc(100% - var(--product-margin-left) - var(--product-margin-right));
   min-height: calc(100vh - var(--product-margin-top));
-  outline: 1px solid black;
 }
 
 .product__header {
@@ -60,6 +64,15 @@
   color: var(--product-author-color);
 }
 
+.product__ratings {
+  margin-top: 0.3rem;
+}
+
+.product--totalRatings {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
 .product__main {
   display: flex;
   flex-flow: row nowrap;
@@ -69,24 +82,21 @@
 }
 
 .product__image {
-  width: 15%;
+  width: var(--product-image-width);
   display: flex;
   justify-content: center;
   height: fit-content;
-  outline: 1px solid black;
 }
 .product__image img {
   max-width: 231px;
   max-height: 346px;
 }
 .product__information {
-  width: 60%;
-  outline: 1px solid black;
+  width: var(--product-information-width);
 }
 .product__price {
-  width: 20%;
+  width: var(--product-price-width);
   height: fit-content;
-  outline: 1px solid black;
 }
 
 .section--heading {
