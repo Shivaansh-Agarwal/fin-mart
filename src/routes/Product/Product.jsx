@@ -63,7 +63,7 @@ async function getProduct({ id, setShowLoadingScreen, setProductData }) {
     );
     setProductData(data.product);
     console.log(data);
-  } catch (e) {
+  } catch (error) {
     toast.error(
       "Error while fetching product details. Please try later! " + error,
       {
