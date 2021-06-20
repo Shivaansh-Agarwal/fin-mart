@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import styles1 from "./styles/Product.module.css";
 import styles2 from "./styles/ProductPrice.module.css";
 import { MdShoppingCart } from "react-icons/md";
@@ -19,6 +20,15 @@ export const ProductPrice = ({ id, price, inStock }) => {
     productsDispatch({
       type: "ADD_TO_CART",
       payload: id,
+    });
+    toast.info("Book Added to Cart 😃", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
     });
   }
 

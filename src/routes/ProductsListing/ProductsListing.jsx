@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "react-toastify/dist/ReactToastify.css";
 import { Grid, ModalSort, ModalFilter, Button } from "../../components";
 import { useProductsContext } from "../../contexts/products.context.js";
 import "./productsListing.css";

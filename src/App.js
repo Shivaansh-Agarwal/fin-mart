@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Topbar } from "./components";
 import { AppRoutes } from "./routes/AppRoutes.jsx";
 import "./styles/App.css";
