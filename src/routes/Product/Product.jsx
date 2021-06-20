@@ -48,7 +48,7 @@ export const Product = () => {
           aboutTheAuthor={aboutTheAuthor}
           additionalDetails={additionalDetails}
         />
-        <ProductPrice price={price} inStock={inStock} />
+        <ProductPrice id={id} price={price} inStock={inStock} />
       </div>
       <LoadingScreen showLoadingScreen={showLoadingScreen} />
     </div>

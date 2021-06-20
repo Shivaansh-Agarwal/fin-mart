@@ -2,13 +2,18 @@
 
 :root {
   --product-image-width: 15%;
-  --product-information-width: 60%;
-  --product-price-width: 16%;
+  --product-information-width: 50%;
+  --product-price-width: 18%;
 
-  --product-margin-top: 10rem;
-  --product-margin-bottom: 3rem;
-  --product-margin-left: 15rem;
-  --product-margin-right: 15rem;
+  --product-margin-top: 7rem;
+  --product-margin-bottom: 0rem;
+  --product-margin-left: 20rem;
+  --product-margin-right: 20rem;
+
+  --product-padding-top: 3rem;
+  --product-padding-bottom: 3rem;
+  --product-padding-left: 2rem;
+  --product-padding-right: 2rem;
 
   --product-name-font-size: 1.8rem;
   --product-name-font-weight: 400;
@@ -27,12 +32,17 @@
   margin-bottom: var(--product-margin-bottom);
   margin-left: var(--product-margin-left);
   margin-right: var(--product-margin-right);
+  padding-top: var(--product-padding-top);
+  padding-bottom: var(--product-padding-bottom);
+  padding-left: var(--product-padding-left);
+  padding-right: var(--product-padding-right);
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
   width: calc(100% - var(--product-margin-left) - var(--product-margin-right));
   min-height: calc(100vh - var(--product-margin-top));
+  background-color: white;
 }
 
 .product__header {
@@ -88,7 +98,7 @@
   height: fit-content;
 }
 .product__image img {
-  max-width: 231px;
+  max-width: 100%;
   max-height: 346px;
 }
 .product__information {

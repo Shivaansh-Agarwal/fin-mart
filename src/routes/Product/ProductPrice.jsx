@@ -2,8 +2,11 @@ import React from "react";
 import styles1 from "./styles/Product.module.css";
 import styles2 from "./styles/ProductPrice.module.css";
 import { MdShoppingCart } from "react-icons/md";
+import { useProductsContext } from "../../contexts/products.context.js";
 
-export const ProductPrice = ({ price, inStock }) => {
+export const ProductPrice = ({ id, price, inStock }) => {
+  const { productsState, productsDispatch } = useProductsContext();
+
   const { discount, discountPercentage, discountedPrice, originalPrice } =
     price;
   const discountPercentageStr = discountPercentage
@@ -11,6 +14,14 @@ export const ProductPrice = ({ price, inStock }) => {
     : "";
   const inStockString = inStock ? "In Stock" : "Out of Stock";
   const inStockClassName = inStock ? styles2.instock : styles2.outofstock;
+
+  function addToCartHandler() {
+    productsDispatch({
+      type: "ADD_TO_CART",
+      payload: id,
+    });
+  }
+
   return (
     <div className={styles1.product__price}>
       <div className={styles2.buybox}>
@@ -27,7 +38,11 @@ export const ProductPrice = ({ price, inStock }) => {
         </div>
 
         <div className={styles2.buybox__buttons}>
-          <button className={styles2.btnaddtocart} disabled={!inStock}>
+          <button
+            className={styles2.btnaddtocart}
+            disabled={!inStock}
+            onClick={addToCartHandler}
+          >
             <MdShoppingCart />
             {` Add To Cart`}
           </button>
