@@ -23,6 +23,7 @@
 .cartImage {
   width: var(--cart-img-width);
   height: var(--cart-img-height);
+  cursor: pointer;
 }
 .cartImage img {
   width: 100%;
@@ -43,6 +44,7 @@
 .bookname {
   font-size: 1.2rem;
   color: black;
+  cursor: pointer;
 }
 
 .priceWrapper {
