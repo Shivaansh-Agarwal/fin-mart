@@ -5,6 +5,9 @@ export function productsReducer(prevState, action) {
     case "INITIALIZE_PRODUCT_LIST":
       return {
         ...prevState,
+        wishList: [],
+        cartList: [],
+        showOutOfStock: false,
         search: null,
         sortBy: null,
         filterBy: [],
@@ -33,23 +36,46 @@ export function productsReducer(prevState, action) {
         ...prevState,
         filterBy: filterByList,
       };
-    case "ADD_TO_CART":
+    case "ADD_TO_CART": {
       let cartList = cloneDeep(prevState.cartList);
-      const isPresent =
-        cartList.find((item) => item.id === action.payload) !== undefined;
-      if (isPresent) {
-        for (let i = 0; i < cartList.length; i++) {
-          if (cartList[i].id === action.payload) {
-            cartList[i].quantity += 1;
-          }
-        }
-      } else {
-        cartList = [...cartList, { id: action.payload, quantity: 1 }];
-      }
+      cartList = [...cartList, { id: action.payload, quantity: 1 }];
       return {
         ...prevState,
         cartList: cartList,
       };
+    }
+    case "REMOVE_FROM_CART": {
+      let cartList = cloneDeep(prevState.cartList);
+      cartList = filter((item) => item.id !== action.payload);
+      return {
+        ...prevState,
+        cartList,
+      };
+    }
+    case "INC_PRODUCT_QTY_CART": {
+      let cartList = cloneDeep(prevState.cartList);
+      cartList.forEach((item) => {
+        if (item.id === action.payload) {
+          item.quantity += 1;
+        }
+      });
+      return {
+        ...prevState,
+        cartList,
+      };
+    }
+    case "DEC_PRODUCT_QTY_CART": {
+      let cartList = cloneDeep(prevState.cartList);
+      cartList.forEach((item) => {
+        if (item.id === action.payload) {
+          item.quantity -= 1;
+        }
+      });
+      return {
+        ...prevState,
+        cartList,
+      };
+    }
     default:
       throw new Error("Something's wrong in Products Reducer");
   }

@@ -1,33 +1,26 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ProductCartQuantity.module.css";
 
-export const ProductCartQuantity = ({ quantity, productsDispatch }) => {
-  const [productQuantity, setProductQuantity] = useState(quantity);
+export const ProductCartQuantity = ({ id, quantity, productsDispatch }) => {
   const [isDecButtonDisabled, setIsDecButtonDisabled] = useState(true);
   const [isIncButtonDisabled, setIsIncButtonDisabled] = useState(false);
   function quantityHandler(action) {
     if (action === "DEC") {
-      setProductQuantity((productQuantity) => {
-        if (productQuantity > 1) {
-          return productQuantity - 1;
-        } else {
-          return productQuantity;
-        }
+      productsDispatch({
+        type: "DEC_PRODUCT_QTY_CART",
+        payload: id,
       });
     } else if (action === "INC") {
-      setProductQuantity((productQuantity) => {
-        if (productQuantity < 5) {
-          return productQuantity + 1;
-        } else {
-          return productQuantity;
-        }
+      productsDispatch({
+        type: "INC_PRODUCT_QTY_CART",
+        payload: id,
       });
     }
   }
   useEffect(() => {
-    setIsDecButtonDisabled(productQuantity === 1);
-    setIsIncButtonDisabled(productQuantity === 5);
-  }, [productQuantity]);
+    setIsDecButtonDisabled(quantity === 1);
+    setIsIncButtonDisabled(quantity === 5);
+  }, [quantity]);
   return (
     <div className={styles.cartQuantityWrapper}>
       <span className={styles.quantityText}>Qty:</span>
@@ -39,7 +32,7 @@ export const ProductCartQuantity = ({ quantity, productsDispatch }) => {
       >
         -
       </button>
-      <span className={styles.quantityNum}>{productQuantity}</span>
+      <span className={styles.quantityNum}>{quantity}</span>
       <button
         disabled={isIncButtonDisabled}
         onClick={() => {

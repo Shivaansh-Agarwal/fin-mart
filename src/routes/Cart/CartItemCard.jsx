@@ -39,6 +39,7 @@ export const CartItemCard = ({
             <span className={styles.discount}>{discountPercentage}</span>
           </div>
           <ProductCartQuantity
+            id={id}
             quantity={quantity}
             productsDispatch={productsDispatch}
           />
