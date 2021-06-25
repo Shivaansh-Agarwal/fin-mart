@@ -1,0 +1,55 @@
+/* Default Styling + Styling for screens less than 500px */
+.cartPrice {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.cartPriceHeader {
+  color: rgb(135, 135, 135);
+  text-transform: capitalize;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(240, 240, 240, 1);
+}
+
+.cartPriceMain {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0.5rem 1rem;
+}
+
+.cartPriceFooter {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid rgba(240, 240, 240, 1);
+}
+
+.price,
+.dicount {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0rem;
+}
+
+.discountAmt {
+  color: rgba(20, 149, 20, 1);
+}
+
+.totalAmt {
+  font-size: 1.2rem;
+}
+
+/* Styling for screens greater than 500px */
+@media screen and (min-width: 500px) {
+  .cartPrice {
+    width: 500px;
+  }
+}

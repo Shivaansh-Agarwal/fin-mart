@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles/Cart.module.css";
 import { useProductsContext } from "../../contexts/products.context.js";
+import { CartPriceCard } from "./CartPriceCard.jsx";
 import { CartItemCard } from "./CartItemCard.jsx";
 
 export const Cart = () => {
@@ -16,35 +17,51 @@ export const Cart = () => {
   return (
     <div className={styles.cart}>
       {cartList.length === 0 ? (
-        <div>Cart is Empty..</div>
+        <CartEmpty />
       ) : (
-        cartItemsList.map((item) => {
-          const {
-            _id,
-            name,
-            description,
-            additionalDetails: { author },
-            price,
-            images,
-            quantity,
-            inStock,
-          } = item;
-          return (
-            <CartItemCard
-              key={_id}
-              id={_id}
-              name={name}
-              description={description}
-              author={author}
-              price={price}
-              image={images[0]}
-              quantity={quantity}
-              inStock={inStock}
-              productsDispatch={productsDispatch}
-            />
-          );
-        })
+        <CartDetails
+          cartItemsList={cartItemsList}
+          productsDispatch={productsDispatch}
+        />
       )}
     </div>
+  );
+};
+
+const CartEmpty = () => {
+  return <div>Cart is empty...</div>;
+};
+
+const CartDetails = ({ cartItemsList, productsDispatch }) => {
+  return (
+    <>
+      <CartPriceCard />
+      {cartItemsList.map((item) => {
+        const {
+          _id,
+          name,
+          description,
+          additionalDetails: { author },
+          price,
+          images,
+          quantity,
+          inStock,
+        } = item;
+        return (
+          <CartItemCard
+            key={_id}
+            id={_id}
+            name={name}
+            description={description}
+            author={author}
+            price={price}
+            image={images[0]}
+            quantity={quantity}
+            inStock={inStock}
+            productsDispatch={productsDispatch}
+          />
+        );
+      })}
+    </>
   );
 };
