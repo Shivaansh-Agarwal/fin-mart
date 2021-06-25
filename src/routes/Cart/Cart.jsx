@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles/Cart.module.css";
 import { useProductsContext } from "../../contexts/products.context.js";
 import { CartPriceCard } from "./CartPriceCard.jsx";
 import { CartItemCard } from "./CartItemCard.jsx";
 
 export const Cart = () => {
+  useEffect(() => {
+    document.title = "Fin Mart | Shopping Cart";
+  }, []);
   const { productsState, productsDispatch } = useProductsContext();
   let { productsList, cartList } = productsState;
   let cartItemsList = cartList.map((cartItem) => {

@@ -7,6 +7,10 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 export const Home = () => {
+  useEffect(() => {
+    document.title = "Fin Mart";
+  }, []);
+
   const { productsState, productsDispatch } = useProductsContext();
   const [showLoadingScreen, setShowLoadingScreen] = useState(false);
 

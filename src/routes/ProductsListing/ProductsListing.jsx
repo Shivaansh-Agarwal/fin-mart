@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, ModalSort, ModalFilter, Button } from "../../components";
 import { useProductsContext } from "../../contexts/products.context.js";
 import "./productsListing.css";
 
 export const ProductsListing = () => {
+  useEffect(() => {
+    document.title = "Fin Mart | Products";
+  });
   const { productsState } = useProductsContext();
   const [isModalSortOpen, setIsModalSortOpen] = useState(false);
   const [isModalFilterOpen, setIsModalFilterOpen] = useState(false);

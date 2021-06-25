@@ -44,7 +44,13 @@ export const CardProductItem = ({ item }) => {
     badgeColor = "white";
   }
   return (
-    <Link to={`/products/${_id}`} className={`card card-shadow prod-card`}>
+    <Link
+      to={{
+        pathname: `/products/${_id}`,
+        prodname: name,
+      }}
+      className={`card card-shadow prod-card`}
+    >
       <div className="prod-card-top">
         <div className="btn-wishlist-wrapper">
           <ButtonLike />

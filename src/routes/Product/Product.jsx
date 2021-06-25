@@ -15,6 +15,9 @@ export const Product = () => {
   const [showLoadingScreen, setShowLoadingScreen] = useState(false);
 
   useEffect(() => {
+    document.title = productData.name ? productData.name : "Fin Mart";
+  }, [productData]);
+  useEffect(() => {
     getProduct({ id, setShowLoadingScreen, setProductData });
   }, []);
 
