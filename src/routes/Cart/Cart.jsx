@@ -62,6 +62,9 @@ const CartDetails = ({ cartItemsList, productsDispatch }) => {
           />
         );
       })}
+      <div className={styles.btnPlaceOrder}>
+        <button>Place Order</button>
+      </div>
     </>
   );
 };

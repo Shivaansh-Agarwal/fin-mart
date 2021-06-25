@@ -29,3 +29,33 @@
   width: calc(100% - var(--cart-margin-left) - var(--cart-margin-right));
   min-height: calc(100vh - var(--cart-margin-top));
 }
+
+.btnPlaceOrder {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  border-top: 1px solid #d4d5d9;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px;
+  background-color: white;
+}
+
+.btnPlaceOrder button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  border-color: #43467f;
+  background-color: #43467f;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 500px) {
+  .btnPlaceOrder {
+    width: 468px;
+  }
+}
