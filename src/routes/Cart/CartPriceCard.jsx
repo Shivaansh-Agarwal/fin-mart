@@ -9,15 +9,17 @@ export const CartPriceCard = () => {
   let origPrice = 0;
   let totalDiscount = 0;
   let finalPrice = 0;
+  let quantity = 1;
   cartList.forEach((cartItem) => {
     let finalCartItem = productsList.find(
       (proditem) => proditem._id === cartItem.id
     );
     const { discount, discountedPrice, originalPrice } = finalCartItem.price;
+    quantity = finalCartItem.quantity;
     noOfItems += 1;
-    origPrice += originalPrice;
-    totalDiscount += discount;
-    finalPrice += discountedPrice;
+    origPrice += originalPrice * quantity;
+    totalDiscount += discount * quantity;
+    finalPrice += discountedPrice * quantity;
   });
   return (
     <div className={styles.cartPrice}>
