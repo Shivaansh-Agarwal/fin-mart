@@ -46,7 +46,7 @@ export function productsReducer(prevState, action) {
     }
     case "REMOVE_FROM_CART": {
       let cartList = cloneDeep(prevState.cartList);
-      cartList = filter((item) => item.id !== action.payload);
+      cartList = cartList.filter((item) => item.id !== action.payload);
       return {
         ...prevState,
         cartList,

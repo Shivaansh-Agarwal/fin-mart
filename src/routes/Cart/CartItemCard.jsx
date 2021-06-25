@@ -20,6 +20,12 @@ export const CartItemCard = ({
   const navigateToProductPage = () => {
     navigate(`/products/${id}`);
   };
+  const removeProductHandler = () => {
+    productsDispatch({
+      type: "REMOVE_FROM_CART",
+      payload: id,
+    });
+  };
   const { discountPercentage, discountedPrice, originalPrice } = price;
   return (
     <div className={styles.cartItem}>
@@ -50,7 +56,7 @@ export const CartItemCard = ({
           <IoHeart />
           <span className={styles.moveToWishlist}>MOVE to WISHLIST</span>
         </button>
-        <button>
+        <button onClick={removeProductHandler}>
           <MdDelete />
           <span className={styles.remove}>REMOVE</span>
         </button>
