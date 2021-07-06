@@ -3,6 +3,7 @@ import { CardOffer } from "../../components/Cards";
 import "./home.css";
 import { useProductsContext } from "../../contexts/products.context.js";
 import { LoadingScreen } from "../../components";
+import { SERVER_URL } from "../../utils/constants.js";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -18,11 +19,9 @@ export const Home = () => {
     try {
       setShowLoadingScreen(true);
       const campaignsResponse = await axios.get(
-        "https://emart.shivaansh98.repl.co/api/v1/campaigns"
+        `${SERVER_URL}/api/v1/campaigns`
       );
-      const productsResponse = await axios.get(
-        "https://emart.shivaansh98.repl.co/api/v1/products"
-      );
+      const productsResponse = await axios.get(`${SERVER_URL}/api/v1/products`);
       const { campaigns } = campaignsResponse.data;
       const { products } = productsResponse.data;
       productsDispatch({
