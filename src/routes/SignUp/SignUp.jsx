@@ -1,32 +1,47 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Login.module.css";
+import styles from "./SignUp.module.css";
 import { Link } from "react-router-dom";
 
-export const Login = () => {
+export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   useEffect(() => {
-    document.title = "Fin Mart | Login";
+    document.title = "Fin Mart | Signup";
   }, []);
 
+  function handleInputName(e) {
+    setName(e.target.value);
+  }
   function handleInpuEmail(e) {
     setEmail(e.target.value);
   }
-
   function handleInputPassword(e) {
     setPassword(e.target.value);
   }
-
-  function loginHandler(e) {
+  function signupHandler(e) {
+    //TODO
     e.preventDefault();
   }
+
   return (
-    <div className={styles.login}>
-      <form className={styles.loginForm} onSubmit={loginHandler}>
-        <h1 className={styles.loginHeading}>Login</h1>
-        <h2 className={styles.loginSubHeading}>
-          Please enter your Email and Password
+    <div className={styles.signup}>
+      <form className={styles.signupForm} onSubmit={signupHandler}>
+        <h1 className={styles.signupHeading}>Sign Up</h1>
+        <h2 className={styles.signupSubHeading}>
+          Please enter your Name, Email and Password
         </h2>
+        <div className={styles.inputField}>
+          <input
+            type="name"
+            name="name"
+            placeholder="Name"
+            value={name}
+            onChange={handleInputName}
+            autoFocus
+            required
+          />
+        </div>
         <div className={styles.inputField}>
           <input
             type="email"
@@ -34,7 +49,6 @@ export const Login = () => {
             placeholder="Email"
             value={email}
             onChange={handleInpuEmail}
-            autoFocus
             required
           />
         </div>
@@ -50,13 +64,10 @@ export const Login = () => {
           />
         </div>
         <div className={styles.inputField}>
-          <input type="submit" value="LOGIN" />
+          <input type="submit" value="SIGN UP" />
         </div>
         <div>
-          Don't have an account? <Link to="/signup">Sign Up</Link>
-        </div>
-        <div className={styles.exampleCredentials}>
-          Test Username: test@abcd.com{<br />} Test Password: dnkne2F$2r2@jbj0L
+          Already have an account? <Link to="/login">Login</Link>
         </div>
       </form>
     </div>

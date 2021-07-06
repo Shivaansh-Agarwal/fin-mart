@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+  --signup-margin-top: 7rem;
+  --signup-margin-bottom: 0rem;
+  --signup-margin-left: 20rem;
+  --signup-margin-right: 20rem;
+  --signup-padding-top: 3rem;
+  --signup-padding-bottom: 3rem;
+  --signup-padding-left: 2rem;
+  --signup-padding-right: 2rem;
+  --signup-font-family: "Poppins", sans-serif;
+  --signup-background-color: white;
+}
+
+.signup {
+  font-family: var(--signup-font-family);
+  margin-top: var(--signup-margin-top);
+  margin-bottom: var(--signup-margin-bottom);
+  margin-left: var(--signup-margin-left);
+  margin-right: var(--signup-margin-right);
+  padding-top: var(--signup-padding-top);
+  padding-bottom: var(--signup-padding-bottom);
+  padding-left: var(--signup-padding-left);
+  padding-right: var(--signup-padding-right);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(100% - var(--signup-margin-left) - var(--signup-margin-right));
+  min-height: calc(
+    100vh - var(--signup-margin-top) - var(--signup-padding-top) -
+      var(--signup-padding-bottom)
+  );
+  background-color: var(--signup-background-color);
+  text-align: center;
+}
+
+.signupForm {
+  width: 30rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.signupHeading {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.signupSubHeading {
+  padding: 0;
+  margin: 0.5rem 0 2rem 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.inputField {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 0.8rem auto;
+  min-width: 20rem;
+  height: auto;
+}
+
+.inputField:nth-of-type(4) {
+  margin: 1.2rem 0rem;
+}
+
+.inputField input {
+  width: 100%;
+  min-height: 2rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.inputField input[type="submit"] {
+  cursor: pointer;
+  background-color: rgb(67, 70, 127, 1);
+  color: white;
+  padding: 0.6rem 0.5rem;
+}
+
+.exampleCredentials {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: gray;
+}

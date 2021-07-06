@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+  --login-margin-top: 7rem;
+  --login-margin-bottom: 0rem;
+  --login-margin-left: 20rem;
+  --login-margin-right: 20rem;
+  --login-padding-top: 3rem;
+  --login-padding-bottom: 3rem;
+  --login-padding-left: 2rem;
+  --login-padding-right: 2rem;
+  --login-font-family: "Poppins", sans-serif;
+  --login-background-color: white;
+}
+
+.login {
+  font-family: var(--login-font-family);
+  margin-top: var(--login-margin-top);
+  margin-bottom: var(--login-margin-bottom);
+  margin-left: var(--login-margin-left);
+  margin-right: var(--login-margin-right);
+  padding-top: var(--login-padding-top);
+  padding-bottom: var(--login-padding-bottom);
+  padding-left: var(--login-padding-left);
+  padding-right: var(--login-padding-right);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(100% - var(--login-margin-left) - var(--login-margin-right));
+  min-height: calc(
+    100vh - var(--login-margin-top) - var(--login-padding-top) -
+      var(--login-padding-bottom)
+  );
+  background-color: var(--login-background-color);
+  text-align: center;
+}
+
+.loginForm {
+  width: 30rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginHeading {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.loginSubHeading {
+  padding: 0;
+  margin: 0.5rem 0 2rem 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.inputField {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 0.8rem auto;
+  min-width: 20rem;
+  height: auto;
+}
+
+.inputField:nth-of-type(3) {
+  margin: 1.2rem 0rem;
+}
+
+.inputField input {
+  width: 100%;
+  min-height: 2rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.inputField input[type="submit"] {
+  cursor: pointer;
+  background-color: rgb(67, 70, 127, 1);
+  color: white;
+  padding: 0.6rem 0.5rem;
+}
+
+.exampleCredentials {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: gray;
+}
