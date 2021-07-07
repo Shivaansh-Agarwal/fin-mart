@@ -3,22 +3,15 @@ import styles from "./SignUp.module.css";
 import { Link } from "react-router-dom";
 
 export const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [userInput, setUserInput] = useState({
+    username: "",
+    password: "",
+    email: "",
+  });
   useEffect(() => {
     document.title = "Fin Mart | Signup";
   }, []);
 
-  function handleInputName(e) {
-    setName(e.target.value);
-  }
-  function handleInpuEmail(e) {
-    setEmail(e.target.value);
-  }
-  function handleInputPassword(e) {
-    setPassword(e.target.value);
-  }
   function signupHandler(e) {
     //TODO
     e.preventDefault();
@@ -33,11 +26,15 @@ export const SignUp = () => {
         </h2>
         <div className={styles.inputField}>
           <input
-            type="name"
-            name="name"
+            type="text"
+            name="username"
             placeholder="Name"
-            value={name}
-            onChange={handleInputName}
+            value={userInput.username}
+            onChange={(e) => {
+              setUserInput((userInput) => {
+                return { ...userInput, username: e.target.value };
+              });
+            }}
             autoFocus
             required
           />
@@ -47,19 +44,27 @@ export const SignUp = () => {
             type="email"
             name="email"
             placeholder="Email"
-            value={email}
-            onChange={handleInpuEmail}
+            value={userInput.email}
+            onChange={(e) => {
+              setUserInput((userInput) => {
+                return { ...userInput, email: e.target.value };
+              });
+            }}
             required
           />
         </div>
         <div className={styles.inputField}>
           <input
             type="password"
-            value={password}
             name="password"
             placeholder="Password"
             aria-label="Password"
-            onChange={handleInputPassword}
+            value={userInput.password}
+            onChange={(e) => {
+              setUserInput((userInput) => {
+                return { ...userInput, password: e.target.value };
+              });
+            }}
             required
           />
         </div>
