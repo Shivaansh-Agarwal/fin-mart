@@ -1,0 +1,14 @@
+:root {
+  --product-image-width: 15%;
+}
+
+.product__image {
+  width: var(--product-image-width);
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+}
+.product__image img {
+  max-width: 100%;
+  max-height: 346px;
+}

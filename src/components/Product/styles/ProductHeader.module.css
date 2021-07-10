@@ -1,0 +1,52 @@
+:root {
+  --product-name-font-size: 1.8rem;
+  --product-name-font-weight: 400;
+  --product-name-color: black;
+  --product-name-font-size: 1.8rem;
+  --product-name-font-weight: 400;
+  --product-name-color: black;
+  --product-bookbinding-font-size: 1.4rem;
+  --product-bookbinding-font-weight: 200;
+  --product-bookbinding-color: rgba(86, 89, 89, 0.7);
+  --product-author-font-size: 1.2rem;
+  --product-author-font-weight: 400;
+  --product-author-color: rgba(0, 0, 0, 0.9);
+}
+
+.product__header {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(231, 231, 231, 1);
+}
+
+.product__name {
+  font-size: var(--product-name-font-size);
+  font-weight: var(--product-name-font-weight);
+  color: var(--product-name-color);
+}
+
+.product__bookbinding {
+  font-size: var(--product-bookbinding-font-size);
+  font-weight: var(--product-bookbinding-font-weight);
+  color: var(--product-bookbinding-color);
+  margin-left: 1rem;
+}
+
+.product__author {
+  font-size: var(--product-author-font-size);
+  font-weight: var(--product-author-font-weight);
+  color: var(--product-author-color);
+}
+
+.product__ratings {
+  margin-top: 0.3rem;
+}
+
+.product--totalRatings {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}

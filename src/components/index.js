@@ -6,3 +6,7 @@ export { Button } from "./Buttons";
 export { ProductCartQuantity } from "./ProductCartQuantity";
 export { CampaignsRow } from "./CardsRow";
 export { BooksRow } from "./CardsRow";
+export { ProductHeader } from "./Product";
+export { ProductImage } from "./Product";
+export { ProductInformation } from "./Product";
+export { ProductPrice } from "./Product";

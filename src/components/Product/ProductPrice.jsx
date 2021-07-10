@@ -1,7 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
-import styles1 from "./styles/Product.module.css";
-import styles2 from "./styles/ProductPrice.module.css";
+import styles1 from "./styles/ProductPrice.module.css";
 import { MdShoppingCart } from "react-icons/md";
 import { useProductsContext } from "../../contexts/products.context.js";
 import { useNavigate } from "react-router";
@@ -16,7 +15,7 @@ export const ProductPrice = ({ id, price, inStock }) => {
     ? `(${discountPercentage})`
     : "";
   const inStockString = inStock ? "In Stock" : "Out of Stock";
-  const inStockClassName = inStock ? styles2.instock : styles2.outofstock;
+  const inStockClassName = inStock ? styles1.instock : styles1.outofstock;
 
   const { cartList } = productsState;
   const isPresentInCart = cartList.find((item) => item.id === id)
@@ -46,29 +45,29 @@ export const ProductPrice = ({ id, price, inStock }) => {
 
   return (
     <div className={styles1.product__price}>
-      <div className={styles2.buybox}>
-        <div className={styles2.price}>{`₹ ${discountedPrice + ".00"}`}</div>
+      <div className={styles1.buybox}>
+        <div className={styles1.price}>{`₹ ${discountedPrice + ".00"}`}</div>
         <div>
           {`M.R.P.: ₹ `}
-          <span className={styles2.mrp}>{originalPrice + ".00"}</span>
+          <span className={styles1.mrp}>{originalPrice + ".00"}</span>
         </div>
         <div>{`You Save: ₹ ${discount} ${discountPercentageStr}`}</div>
-        <div className={styles2.taxes}>Inclusive of all taxes</div>
+        <div className={styles1.taxes}>Inclusive of all taxes</div>
 
-        <div className={`${styles2.stock} ${inStockClassName}`}>
+        <div className={`${styles1.stock} ${inStockClassName}`}>
           {inStockString}
         </div>
 
-        <div className={styles2.buybox__buttons}>
+        <div className={styles1.buybox__buttons}>
           <button
-            className={styles2.btnaddtocart}
+            className={styles1.btnaddtocart}
             disabled={!inStock}
             onClick={cartHandler}
           >
             <MdShoppingCart />
             {btnCartText}
           </button>
-          {/* <button className={styles2.btnbuynow} disabled={!inStock}>
+          {/* <button className={styles1.btnbuynow} disabled={!inStock}>
             Buy Now
           </button> */}
         </div>

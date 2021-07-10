@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./styles/Product.module.css";
+import styles from "./styles/ProductInformation.module.css";
 
 export const ProductInformation = ({
   productOverview,
@@ -23,11 +23,13 @@ export const ProductInformation = ({
 
 const ProductSectionPara = ({ sectionHeading, paraList }) => {
   return (
-    <section className={styles.product__overview}>
+    <section>
       <h1 className={styles["section--heading"]}>{sectionHeading}</h1>
       <div>
         {paraList.map((para, index) => (
-          <p key={index}>{para}</p>
+          <p key={index} className={styles.productSectionPara}>
+            {para}
+          </p>
         ))}
       </div>
     </section>
@@ -47,9 +49,9 @@ const ProductSectionList = ({ additionalDetails }) => {
     weight,
   } = additionalDetails;
   return (
-    <section className={styles.product__details}>
+    <section className={styles}>
       <h1 className={styles["section--heading"]}>Book Details</h1>
-      <ul>
+      <ul className={styles.productDetailsList}>
         <ListItem title="Author: " value={author} />
         <ListItem title="Country of Origin: " value={countryOfOrigin} />
         <ListItem title="Dimensions: " value={dimensions} />

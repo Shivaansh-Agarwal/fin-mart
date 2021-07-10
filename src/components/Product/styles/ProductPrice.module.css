@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 :root {
+  --product-price-width: 18%;
+
   --buybox-font-family: "Roboto", sans-serif;
   --buybox-padding-vertical: 1.2rem;
   --buybox-padding-horizontal: 1rem;
@@ -14,6 +16,11 @@
 
   --btn-enabled-color: #43467f;
   --btn-disabled-color: #8284ac;
+}
+
+.product__price {
+  width: var(--product-price-width);
+  height: fit-content;
 }
 
 .buybox {

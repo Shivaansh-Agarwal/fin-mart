@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./styles/Product.module.css";
+import styles from "./styles/ProductImage.module.css";
 
 export const ProductImage = ({ image }) => {
   return (

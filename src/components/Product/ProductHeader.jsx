@@ -1,6 +1,6 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
-import styles from "./styles/Product.module.css";
+import styles from "./styles/ProductHeader.module.css";
 
 export const ProductHeader = ({ name, description, author, ratings }) => {
   const { avgRatings, totalRatings } = ratings;
