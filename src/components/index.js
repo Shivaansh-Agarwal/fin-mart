@@ -4,3 +4,5 @@ export { ModalSort, ModalFilter } from "./Modals";
 export { LoadingScreen } from "./LoadingScreen";
 export { Button } from "./Buttons";
 export { ProductCartQuantity } from "./ProductCartQuantity";
+export { CampaignsRow } from "./CardsRow";
+export { BooksRow } from "./CardsRow";

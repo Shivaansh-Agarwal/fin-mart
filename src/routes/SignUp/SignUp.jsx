@@ -1,20 +1,35 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { SERVER_URL } from "../../utils/constants.js";
+import { useAuth } from "../../contexts/auth.context.jsx";
 import styles from "./SignUp.module.css";
-import { Link } from "react-router-dom";
+import { LoadingScreen } from "../../components";
 
 export const SignUp = () => {
+  const navigate = useNavigate();
+  const { setToken, setIsUserLoggedIn } = useAuth();
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
     email: "",
   });
+  const [showLoadingScreen, setShowLoadingScreen] = useState(false);
+
   useEffect(() => {
     document.title = "Fin Mart | Signup";
   }, []);
 
   function signupHandler(e) {
-    //TODO
     e.preventDefault();
+    signup({
+      ...userInput,
+      setToken,
+      setIsUserLoggedIn,
+      setShowLoadingScreen,
+      navigate,
+    });
   }
 
   return (
@@ -75,6 +90,56 @@ export const SignUp = () => {
           Already have an account? <Link to="/login">Login</Link>
         </div>
       </form>
+      <LoadingScreen showLoadingScreen={showLoadingScreen} />
     </div>
   );
 };
+
+async function signup({
+  username,
+  password,
+  email,
+  setToken,
+  setIsUserLoggedIn,
+  setShowLoadingScreen,
+  navigate,
+}) {
+  try {
+    setShowLoadingScreen(true);
+    const { data } = await axios.post(`${SERVER_URL}/api/v1/signup`, {
+      username,
+      password,
+      email,
+    });
+    if (data?.success === true) {
+      toast.info(data?.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setToken(data?.token);
+      setIsUserLoggedIn(true);
+      localStorage.setItem(
+        "login",
+        JSON.stringify({ isLoggedIn: true, token: data?.token })
+      );
+      navigate("/");
+      console.log(
+        "## Signup Successful, User Details: ",
+        JSON.stringify(data?.user)
+      );
+    } else if (data?.success === false) {
+      throw new Error(data?.message);
+    }
+  } catch (e) {
+    toast.error("Signup Failed. Please try later! " + e, {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  } finally {
+    setShowLoadingScreen(false);
+  }
+}

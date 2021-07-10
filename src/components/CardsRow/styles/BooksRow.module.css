@@ -1,18 +1,4 @@
-.home {
-  margin-top: 7rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: #eaeded;
-  min-height: 90vh;
-}
-.home__wrapper {
-  width: 80%;
-}
-.home__adv__row {
+.campaigns_row {
   position: relative;
   display: flex;
   flex-flow: row wrap;
@@ -22,13 +8,15 @@
   padding-top: 3rem;
   padding-bottom: 1rem;
 }
-.home__row__title {
+
+.booksRowTitle {
   position: absolute;
   left: 1rem;
   top: 1rem;
   font-size: 1.2rem;
   font-weight: 600;
 }
-.bg-white {
+
+.bgWhite {
   background-color: white;
 }

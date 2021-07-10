@@ -1,183 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { CardOffer } from "../../components/Cards";
-import "./home.css";
+import styles from "./styles/Home.module.css";
 import { useProductsContext } from "../../contexts/products.context.js";
-import { LoadingScreen } from "../../components";
-import { SERVER_URL } from "../../utils/constants.js";
-import { toast } from "react-toastify";
-import axios from "axios";
+import { CampaignsRow, BooksRow, LoadingScreen } from "../../components";
+import { getProductsAndCampaignsData } from "../../api/api-response.js";
+import { filterBooksByTag } from "../../utils/utility.js";
 
 export const Home = () => {
+  const { productsState, productsDispatch } = useProductsContext();
+  const [showLoadingScreen, setShowLoadingScreen] = useState(true);
+
   useEffect(() => {
     document.title = "Fin Mart";
+    getProductsAndCampaignsData({ productsDispatch, setShowLoadingScreen });
   }, []);
 
-  const { productsState, productsDispatch } = useProductsContext();
-  const [showLoadingScreen, setShowLoadingScreen] = useState(false);
-
-  const getProductsAndCampaigns = async () => {
-    try {
-      setShowLoadingScreen(true);
-      const campaignsResponse = await axios.get(
-        `${SERVER_URL}/api/v1/campaigns`
-      );
-      const productsResponse = await axios.get(`${SERVER_URL}/api/v1/products`);
-      const { campaigns } = campaignsResponse.data;
-      const { products } = productsResponse.data;
-      productsDispatch({
-        type: "INITIALIZE_CAMPAIGNS",
-        payload: campaigns,
-      });
-      productsDispatch({
-        type: "INITIALIZE_PRODUCT_LIST",
-        payload: products,
-      });
-    } catch (error) {
-      toast.error(
-        "Error while fetching products or campaigns. Please try later! " +
-          error,
-        {
-          position: toast.POSITION.BOTTOM_CENTER,
-        }
-      );
-    } finally {
-      setShowLoadingScreen(false);
-    }
-  };
-
-  useEffect(() => {
-    getProductsAndCampaigns();
-  }, []);
-
-  const productsListHome = productsState.productsList.reduce(
-    (booksHomeList, currItem) => {
-      const { badge } = currItem;
-      switch (badge.tagName) {
-        case "NATIONAL BESTSELLER":
-          return {
-            ...booksHomeList,
-            nationalBestSellers: [
-              ...booksHomeList.nationalBestSellers,
-              currItem,
-            ],
-          };
-        case "WORLDWIDE BESTSELLER":
-          return {
-            ...booksHomeList,
-            worldWideBestSellers: [
-              ...booksHomeList.worldWideBestSellers,
-              currItem,
-            ],
-          };
-        default:
-          return booksHomeList;
-      }
-    },
-    {
-      worldWideBestSellers: [],
-      nationalBestSellers: [],
-    }
-  );
+  const productsListHome = filterBooksByTag(productsState);
+  const campaignsList1 = productsState.campaigns.slice(0, 2);
+  const campaignsList2 = productsState.campaigns.slice(2, 4);
+  const booksList1 = productsListHome.worldWideBestSellers.slice(0, 5);
+  const booksList2 = productsListHome.nationalBestSellers.slice(0, 5);
 
   return (
-    <div className="home">
-      <div className="home__wrapper">
-        <div className="home__adv__row">
-          {productsState.campaigns
-            .slice(0, 2)
-            .map(({ _id, name, description, offer, imgURL, category }) => {
-              return (
-                <CardOffer
-                  key={_id}
-                  title={name}
-                  description={description}
-                  discount={offer}
-                  imgURL={imgURL}
-                  prodURL=""
-                  category={category}
-                  cardClassName="card-offer-type2"
-                />
-              );
-            })}
-        </div>
-        <div className="home__adv__row bg-white">
-          <div className="home__row__title">All-time Bestsellers</div>
-          {productsListHome.worldWideBestSellers
-            .slice(0, 5)
-            .map(
-              ({
-                _id,
-                name,
-                description,
-                price,
-                images,
-                additionalDetails,
-              }) => {
-                const { discount, discountPercentage } = price;
-                const { author } = additionalDetails;
-                return (
-                  <CardOffer
-                    key={_id}
-                    id={_id}
-                    title={name}
-                    description={author}
-                    discount={discount !== 0 ? discountPercentage : ""}
-                    imgURL={images[1]}
-                    prodURL=""
-                    cardClassName="card-offer-type1"
-                  />
-                );
-              }
-            )}
-        </div>
-        <div className="home__adv__row">
-          {productsState.campaigns
-            .slice(2, 4)
-            .map(({ _id, name, description, offer, imgURL, category }) => {
-              return (
-                <CardOffer
-                  key={_id}
-                  title={name}
-                  description={description}
-                  discount={offer}
-                  imgURL={imgURL}
-                  prodURL=""
-                  category={category}
-                  cardClassName="card-offer-type3"
-                />
-              );
-            })}
-        </div>
-        <div className="home__adv__row bg-white">
-          <div className="home__row__title">Indian Bestsellers</div>
-          {productsListHome.nationalBestSellers
-            .slice(0, 5)
-            .map(
-              ({
-                _id,
-                name,
-                description,
-                price,
-                images,
-                additionalDetails,
-              }) => {
-                const { discount, discountPercentage } = price;
-                const { author } = additionalDetails;
-                return (
-                  <CardOffer
-                    key={_id}
-                    id={_id}
-                    title={name}
-                    description={author}
-                    discount={discount !== 0 ? discountPercentage : ""}
-                    imgURL={images[1]}
-                    prodURL=""
-                    cardClassName="card-offer-type1"
-                  />
-                );
-              }
-            )}
-        </div>
+    <div className={styles.home}>
+      <div className={styles.home__wrapper}>
+        <CampaignsRow campaignsList={campaignsList1} />
+        <BooksRow booksList={booksList1} rowHeading="All-time Bestsellers" />
+        <CampaignsRow campaignsList={campaignsList2} />
+        <BooksRow booksList={booksList2} rowHeading="National Bestsellers" />
       </div>
       <LoadingScreen showLoadingScreen={showLoadingScreen} />
     </div>

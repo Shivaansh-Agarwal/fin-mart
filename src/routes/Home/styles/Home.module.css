@@ -1,0 +1,14 @@
+.home {
+  margin-top: 7rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #eaeded;
+  min-height: 90vh;
+}
+.home__wrapper {
+  width: 80%;
+}

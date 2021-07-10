@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
 import styles from "./styles/Product.module.css";
 import { LoadingScreen } from "../../components";
@@ -8,17 +7,18 @@ import { ProductHeader } from "./ProductHeader.jsx";
 import { ProductImage } from "./ProductImage.jsx";
 import { ProductInformation } from "./ProductInformation.jsx";
 import { ProductPrice } from "./ProductPrice.jsx";
+import { getProduct } from "../../api/api-serviceCalls.js";
 
 export const Product = () => {
   const { id } = useParams();
   const [productData, setProductData] = useState({});
-  const [showLoadingScreen, setShowLoadingScreen] = useState(false);
+  const [showLoadingScreen, setShowLoadingScreen] = useState(true);
 
   useEffect(() => {
     document.title = productData.name ? productData.name : "Fin Mart";
   }, [productData]);
   useEffect(() => {
-    getProduct({ id, setShowLoadingScreen, setProductData });
+    getProductData({ id, setShowLoadingScreen, setProductData });
   }, []);
 
   if (Object.keys(productData).length === 0) return null;
@@ -58,22 +58,14 @@ export const Product = () => {
   );
 };
 
-async function getProduct({ id, setShowLoadingScreen, setProductData }) {
-  try {
-    setShowLoadingScreen(true);
-    const { data } = await axios.get(
-      `https://emart.shivaansh98.repl.co/api/v1/products/${id}`
-    );
-    setProductData(data.product);
-    console.log(data);
-  } catch (error) {
-    toast.error(
-      "Error while fetching product details. Please try later! " + error,
-      {
-        position: toast.POSITION.BOTTOM_CENTER,
-      }
-    );
-  } finally {
-    setShowLoadingScreen(false);
+async function getProductData({ id, setProductData, setShowLoadingScreen }) {
+  const productResponse = await getProduct(id);
+  if (productResponse.success) {
+    setProductData(productResponse.data);
+  } else {
+    toast.error(productsResponse.message, {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
   }
+  setShowLoadingScreen(false);
 }
