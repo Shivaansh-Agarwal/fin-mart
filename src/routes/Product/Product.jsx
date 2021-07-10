@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import styles from "./styles/Product.module.css";
 import { LoadingScreen } from "../../components";
 import { ProductHeader } from "./ProductHeader.jsx";
 import { ProductImage } from "./ProductImage.jsx";
 import { ProductInformation } from "./ProductInformation.jsx";
 import { ProductPrice } from "./ProductPrice.jsx";
-import { getProduct } from "../../api/api-serviceCalls.js";
+import { getProductData } from "../../api/api-response";
 
 export const Product = () => {
   const { id } = useParams();
@@ -57,15 +56,3 @@ export const Product = () => {
     </div>
   );
 };
-
-async function getProductData({ id, setProductData, setShowLoadingScreen }) {
-  const productResponse = await getProduct(id);
-  if (productResponse.success) {
-    setProductData(productResponse.data);
-  } else {
-    toast.error(productsResponse.message, {
-      position: toast.POSITION.BOTTOM_CENTER,
-    });
-  }
-  setShowLoadingScreen(false);
-}
