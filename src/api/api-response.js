@@ -48,7 +48,7 @@ export async function getProductData({
   if (productResponse.success) {
     setProductData(productResponse.data);
   } else {
-    toast.error(productsResponse.message, {
+    toast.error(productResponse.message, {
       position: toast.POSITION.BOTTOM_CENTER,
     });
   }

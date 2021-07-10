@@ -34,7 +34,7 @@ async function apiRequest(
     });
   } catch (e) {
     console.error(e);
-    response = getResponseObject({
+    finalResponse = getResponseObject({
       message: errMsg,
     });
   } finally {
