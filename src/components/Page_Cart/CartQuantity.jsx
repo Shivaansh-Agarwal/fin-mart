@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import styles from "./ProductCartQuantity.module.css";
+import styles from "./styles/CartQuantity.module.css";
 
-export const ProductCartQuantity = ({ id, quantity, productsDispatch }) => {
+export const CartQuantity = ({ id, quantity, productsDispatch }) => {
   const [isDecButtonDisabled, setIsDecButtonDisabled] = useState(true);
   const [isIncButtonDisabled, setIsIncButtonDisabled] = useState(false);
   function quantityHandler(action) {

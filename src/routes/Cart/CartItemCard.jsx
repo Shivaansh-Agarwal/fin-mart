@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles/CartItem.module.css";
 import { MdDelete } from "react-icons/md";
 import { IoHeart } from "react-icons/io5";
-import { ProductCartQuantity } from "../../components";
+import { CartQuantity } from "../../components";
 import { useNavigate } from "react-router";
 
 export const CartItemCard = ({
@@ -44,7 +44,7 @@ export const CartItemCard = ({
             <span className={styles.mrp}>{`₹${originalPrice}`}</span>
             <span className={styles.discount}>{discountPercentage}</span>
           </div>
-          <ProductCartQuantity
+          <CartQuantity
             id={id}
             quantity={quantity}
             productsDispatch={productsDispatch}
