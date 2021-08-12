@@ -1,0 +1,10 @@
+.campaigns_row {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0rem;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}

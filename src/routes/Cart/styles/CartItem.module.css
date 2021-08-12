@@ -1,0 +1,106 @@
+:root {
+  --cart-img-width: 9rem;
+  --cart-img-height: 12rem;
+  --product-details-color: rgba(86, 89, 89, 0.7);
+}
+
+.cartItem {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.cartItemDetails {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.cartImage {
+  width: var(--cart-img-width);
+  height: var(--cart-img-height);
+  cursor: pointer;
+}
+.cartImage img {
+  width: 100%;
+  height: 100%;
+}
+
+.cartRight {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 1rem;
+  width: calc(100% - var(--cart-img-width) - 1rem);
+  color: var(--product-details-color);
+  font-size: 0.9rem;
+}
+
+.bookname {
+  font-size: 1.2rem;
+  color: black;
+  cursor: pointer;
+}
+
+.priceWrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 1rem 0rem 1rem 0rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.mrp {
+  font-size: 1rem;
+  margin-left: 0.3rem;
+  text-decoration: line-through;
+}
+
+.discount {
+  font-size: 1rem;
+  margin-left: 0.3rem;
+  color: rgba(59, 157, 57, 1);
+  font-weight: 600;
+}
+
+.cartbuttons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+.cartbuttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  width: 50%;
+  height: 3rem;
+  cursor: pointer;
+  border: 1px solid rgba(240, 240, 240, 1);
+  font-size: 0.95rem;
+}
+
+.remove {
+  margin-left: 0.4rem;
+}
+
+.moveToWishlist {
+  margin-left: 0.4rem;
+}
+
+@media screen and (min-width: 500px) {
+  .cartItem {
+    width: 500px;
+  }
+}

@@ -1,0 +1,19 @@
+.like-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.btn-like {
+  outline: none;
+}
+.like {
+  cursor: pointer;
+  outline: none;
+}
+.like-active {
+  color: rgb(237, 73, 86);
+}
+.like-inactive {
+  color: rgb(220, 223, 230);
+}

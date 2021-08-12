@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --cart-margin-top: 7rem;
+  --cart-margin-bottom: 0rem;
+  --cart-margin-left: 20rem;
+  --cart-margin-right: 20rem;
+
+  --cart-padding-top: 3rem;
+  --cart-padding-bottom: 3rem;
+  --cart-padding-left: 2rem;
+  --cart-padding-right: 2rem;
+}
+
+.cart {
+  margin-top: var(--cart-margin-top);
+  margin-bottom: var(--cart-margin-bottom);
+  margin-left: var(--cart-margin-left);
+  margin-right: var(--cart-margin-right);
+  padding-top: var(--cart-padding-top);
+  padding-bottom: var(--cart-padding-bottom);
+  padding-left: var(--cart-padding-left);
+  padding-right: var(--cart-padding-right);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  width: calc(100% - var(--cart-margin-left) - var(--cart-margin-right));
+  min-height: calc(100vh - var(--cart-margin-top));
+}
+
+.btnPlaceOrder {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  border-top: 1px solid #d4d5d9;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px;
+  background-color: white;
+}
+
+.btnPlaceOrder button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  border-color: #43467f;
+  background-color: #43467f;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 500px) {
+  .btnPlaceOrder {
+    width: 468px;
+  }
+}

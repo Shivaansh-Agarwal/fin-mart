@@ -1,0 +1,31 @@
+:root {
+  --product-information-width: 50%;
+}
+
+.product__information {
+  width: var(--product-information-width);
+}
+
+.section--heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 0rem;
+  margin-bottom: 0.5rem;
+}
+
+.list-item-nobullet {
+  list-style: none;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.productDetailsList {
+  margin: 0rem;
+  padding-left: 1rem;
+}
+
+.productSectionPara {
+  margin-top: 0rem;
+}

@@ -1,0 +1,24 @@
+.cartQuantityWrapper {
+  display: flex;
+  align-items: center;
+  color: black;
+}
+.cartQuantityWrapper button {
+  height: 1.8rem;
+  width: 1.8rem;
+  border: 1px solid #c2c2c2;
+  border-radius: 50%;
+  background-color: linear-gradient(#fff, #f9f9f9);
+  cursor: pointer;
+}
+.cartQuantityWrapper button:disabled {
+  color: #c2c2c2;
+  border-color: #e0e0e0;
+  cursor: default;
+}
+.quantityText {
+  margin-right: 0.5rem;
+}
+.quantityNum {
+  margin: 0rem 0.4rem;
+}
