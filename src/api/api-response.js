@@ -14,6 +14,7 @@ export async function getProductsAndCampaignsData({
   productsDispatch,
   setShowLoadingScreen,
 }) {
+  setShowLoadingScreen(true);
   const campaignsResponse = await getCampaignsData();
   const productsResponse = await getProductsData();
   if (campaignsResponse.success && productsResponse.success) {

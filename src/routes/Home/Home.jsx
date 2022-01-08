@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./styles/Home.module.css";
+import { useLoadingScreen } from "../../contexts/loadingscreen.context";
 import { useProductsContext } from "../../contexts/products.context.js";
-import { CampaignsRow, BooksRow, LoadingScreen } from "../../components";
+import { CampaignsRow, BooksRow } from "../../components";
 import { getProductsAndCampaignsData } from "../../api/api-response.js";
 import { filterBooksByTag } from "../../utils/utility.js";
 
 export const Home = () => {
   const { productsState, productsDispatch } = useProductsContext();
-  const [showLoadingScreen, setShowLoadingScreen] = useState(true);
+  const { setShowLoadingScreen } = useLoadingScreen();
 
   useEffect(() => {
     document.title = "Fin Mart";
     getProductsAndCampaignsData({ productsDispatch, setShowLoadingScreen });
-  }, []);
+  }, [productsDispatch, setShowLoadingScreen]);
 
   const productsListHome = filterBooksByTag(productsState);
   const campaignsList1 = productsState.campaigns.slice(0, 2);
@@ -28,7 +29,6 @@ export const Home = () => {
         <CampaignsRow campaignsList={campaignsList2} />
         <BooksRow booksList={booksList2} rowHeading="National Bestsellers" />
       </div>
-      <LoadingScreen showLoadingScreen={showLoadingScreen} />
     </div>
   );
 };
