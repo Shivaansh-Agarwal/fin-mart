@@ -45,6 +45,7 @@ export async function getProductData({
   setProductData,
   setShowLoadingScreen,
 }) {
+  setShowLoadingScreen(true);
   const productResponse = await getProduct(id);
   if (productResponse.success) {
     setProductData(productResponse.data);

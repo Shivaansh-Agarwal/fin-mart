@@ -5,7 +5,7 @@ import axios from "axios";
 import { SERVER_URL } from "../../utils/constants.js";
 import { useAuth } from "../../contexts/auth.context.jsx";
 import styles from "./SignUp.module.css";
-import { LoadingScreen } from "../../components";
+import { useLoadingScreen } from "../../contexts/loadingscreen.context";
 
 export const SignUp = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ export const SignUp = () => {
     password: "",
     email: "",
   });
-  const [showLoadingScreen, setShowLoadingScreen] = useState(false);
+  const { setShowLoadingScreen } = useLoadingScreen();
 
   useEffect(() => {
     document.title = "Fin Mart | Signup";
@@ -90,7 +90,6 @@ export const SignUp = () => {
           Already have an account? <Link to="/login">Login</Link>
         </div>
       </form>
-      <LoadingScreen showLoadingScreen={showLoadingScreen} />
     </div>
   );
 };

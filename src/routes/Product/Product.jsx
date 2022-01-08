@@ -6,14 +6,14 @@ import {
   ProductImage,
   ProductInformation,
   ProductPrice,
-  LoadingScreen,
 } from "../../components";
 import { getProductData } from "../../api/api-response";
+import { useLoadingScreen } from "../../contexts/loadingscreen.context";
 
 export const Product = () => {
   const { id } = useParams();
   const [productData, setProductData] = useState({});
-  const [showLoadingScreen, setShowLoadingScreen] = useState(true);
+  const { setShowLoadingScreen } = useLoadingScreen();
 
   useEffect(() => {
     document.title = productData.name ? productData.name : "Fin Mart";
@@ -54,7 +54,6 @@ export const Product = () => {
         />
         <ProductPrice id={id} price={price} inStock={inStock} />
       </div>
-      <LoadingScreen showLoadingScreen={showLoadingScreen} />
     </div>
   );
 };
